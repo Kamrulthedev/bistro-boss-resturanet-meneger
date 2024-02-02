@@ -1,21 +1,12 @@
-import { useEffect, useState } from "react";
+
 import MenuItem from "../Saherd/Menuitem/MenuItem";
+import useMenu from "../../../../Hooks/useMenu";
 
 const PopulerMeno = () => {
-    const [menu, setMenu] = useState([]);
+    const [menu] = useMenu();
+    const populer = menu.filter(item => item.category === 'popular')
+
     
-
-    useEffect(() => {
-        fetch('menu.json')
-            .then(res => res.json())
-            .then(data => {
-                const populerItems = data.filter(item => item.category === 'popular')
-                setMenu(populerItems)
-            })
-    }, [])
-
-
-
     return (
         <div className="mt-36 ">
             <div className='text-center space-y-6 mb-8' >
@@ -26,14 +17,14 @@ const PopulerMeno = () => {
             </div>
             <div className=" grid grid-cols-2 gap-10">
                 {
-                    menu.map(itme => <MenuItem key={itme._id}
-                        item={itme}    
+                    populer.map(item => <MenuItem key={item._id}
+                        item={item}
                     >
                     </MenuItem>)
                 }
             </div>
             <div className="text-center mt-6">
-                <button className="uppercase btn border-b-4 border-black">ORDER YOUR FAVOURITE FOOD</button>
+                <button className="uppercase btn border-b-4 border-black">View Full  Menu</button>
             </div>
         </div>
     );
