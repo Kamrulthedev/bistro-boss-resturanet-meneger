@@ -3,6 +3,7 @@ import Cover from '../../Home/Saherd/Cover/Cover';
 import imges from './../../../../assets/menu/banner3.jpg'
 import useMenu from '../../../../Hooks/useMenu';
 import MenuCatagory from '../MenuCatagory/MenuCatagory';
+import PopulerItems from '../PopulerItems/PopulerItems';
 
 
 const Menu = () => {
@@ -30,10 +31,57 @@ const Menu = () => {
                     <h3 className='text-4xl'>TODAY'S OFFER</h3>
                     <p className='border  w-[424px] h-[4px] text-center flex-shrink-0 ml-[430px] '></p>
                 </div>
+                {/* Dessard menu Items */}
                 <MenuCatagory items={offer}></MenuCatagory>
                 <div className="text-center mt-6">
                     <button className="uppercase btn border-b-4 border-black">ORDER YOUR FAVOURITE FOOD</button>
                 </div>
+                <PopulerItems
+                    title='desserts'
+                ></PopulerItems>
+                {/* dessert Items */}
+                <MenuCatagory items={dessert}
+
+                ></MenuCatagory>
+                <div className="text-center mt-6">
+                    <button className="uppercase btn border-b-4 border-black">ORDER YOUR FAVOURITE FOOD</button>
+                </div>
+                {/* Pissea Items */}
+                <PopulerItems
+                    title='pizza'
+                ></PopulerItems>
+                {/* Pizza Items */}
+                <MenuCatagory items={pizza}
+
+                ></MenuCatagory>
+                <div className="text-center mt-6">
+                    <button className="uppercase btn border-b-4 border-black">ORDER YOUR FAVOURITE FOOD</button>
+                </div>
+                {/* Pissea Items */}
+                <PopulerItems
+                    title='salad'
+                ></PopulerItems>
+                {/* Pizza Items */}
+                <MenuCatagory items={salad}
+
+                ></MenuCatagory>
+                <div className="text-center mt-6">
+                    <button className="uppercase btn border-b-4 border-black">ORDER YOUR FAVOURITE FOOD</button>
+                </div>
+
+
+                {/* sup Items */}
+                <PopulerItems
+                    title='soup'
+                ></PopulerItems>
+                {/* Pizza Items */}
+                <MenuCatagory items={soup}
+
+                ></MenuCatagory>
+                <div className="text-center mt-6 mb-8">
+                    <button className="uppercase btn border-b-4 border-black">ORDER YOUR FAVOURITE FOOD</button>
+                </div>
+
             </div>
         </div>
     );

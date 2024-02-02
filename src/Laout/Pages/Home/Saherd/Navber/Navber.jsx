@@ -5,12 +5,12 @@ import logo from './../../../../../assets/icon/images.png';
 const Navber = () => {
 
     const AddLinks = <>
-        <Link className="font-bold mr-6 text-xs" to='/' >HOME</Link>
-        <Link className="font-bold text-xs  " >CONTACT US</Link>
-        <Link className="font-bold text-xs ">DASHBOARD</Link>
-        <Link className="font-bold text-xs " to='/menu' >OUR MENU</Link>
-        <Link className="font-bold text-xs  flex">OUR SHOP<FaCartShopping className="text-xl ml-2" /></Link>
-        <Link className="font-bold text-xs  ">SIGN OUT</Link>
+        <Link className="font-bold mr-6 text-xs hover:text-lime-500" to='/' >HOME</Link>
+        <Link className="font-bold text-xs hover:text-lime-500 " >CONTACT US</Link>
+        <Link className="font-bold text-xs hover:text-lime-500 ">DASHBOARD</Link>
+        <Link className="font-bold text-xs hover:text-lime-500 " to='/menu' >OUR MENU</Link>
+        <Link className="font-bold text-xs hover:text-lime-500  flex">OUR SHOP<FaCartShopping className="text-xl ml-2" /></Link>
+        <Link className="font-bold text-xs hover:text-lime-500 ">SIGN OUT</Link>
     </>
 
     return (
