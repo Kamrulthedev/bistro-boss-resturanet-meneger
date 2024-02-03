@@ -10,7 +10,7 @@ const Navber = () => {
         <Link className="font-bold text-xs hover:text-lime-500 ">DASHBOARD</Link>
         <Link className="font-bold text-xs hover:text-lime-500 " to='/menu' >OUR MENU</Link>
         <Link className="font-bold text-xs hover:text-lime-500  flex" to='/order'>OUR SHOP<FaCartShopping className="text-xl ml-2" /></Link>
-        <Link className="font-bold text-xs hover:text-lime-500 ">SIGN OUT</Link>
+        <Link className="font-bold text-xs hover:text-lime-500 ">SIGN IN</Link>
     </>
 
     return (

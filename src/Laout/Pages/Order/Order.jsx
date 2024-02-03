@@ -3,11 +3,22 @@ import Cover from "../Home/Saherd/Cover/Cover";
 import img3 from './../../../assets/shop/banner2.jpg';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import useMenu from "../../../Hooks/useMenu";
+import FoodCard from "../../../Compunents/FoodCard";
+import OrderTab from "./OrderTab";
 
 
 
 const Order = () => {
     const [tabIndex, setTebIndex] = useState();
+    const [menu] = useMenu();
+    const dessert = menu.filter(item => item.category === 'dessert');
+    const salad = menu.filter(item => item.category === 'salad');
+    const pizza = menu.filter(item => item.category === 'pizza');
+    const soup = menu.filter(item => item.category === 'soup');
+    const offer = menu.filter(item => item.category === 'offered');
+    const drinks = menu.filter(item => item.category === 'drinks')
+
     return (
         <div>
             <Cover img={img3} title='OUR SHOP' ></Cover>
@@ -20,8 +31,21 @@ const Order = () => {
                     <Tab>DESSETS</Tab>
                     <Tab>DRINKS</Tab>
                 </TabList>
-                <TabPanel></TabPanel>
-                <TabPanel></TabPanel>
+                <TabPanel>
+                <OrderTab item={salad}></OrderTab>
+                </TabPanel>
+                <TabPanel>
+                <OrderTab item={pizza}></OrderTab>
+                </TabPanel>
+                <TabPanel>
+                <OrderTab item={soup}></OrderTab>
+                </TabPanel>
+                <TabPanel>
+                <OrderTab item={dessert}></OrderTab>
+                </TabPanel>
+                <TabPanel>
+                <OrderTab item={drinks}></OrderTab>
+                </TabPanel>
             </Tabs>
         </div>
     );
