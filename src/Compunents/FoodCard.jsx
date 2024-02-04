@@ -9,9 +9,8 @@ const FoodCard = ({ item }) => {
             <div className="card-body">
                     <h2 className="card-title">{name}</h2>
                 <h1 className="text-center">{recipe}</h1>
-
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary uppercase">add to card</button>
+                    <button className="btn  text-lime-500 uppercase">add to card</button>
                 </div>
             </div>
         </div>
