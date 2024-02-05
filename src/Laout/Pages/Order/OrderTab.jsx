@@ -1,4 +1,5 @@
 import FoodCard from "../../../Compunents/FoodCard";
+import PropTypes from 'prop-types';
 
 const OrderTab = ({item}) => {
     return (
@@ -12,5 +13,15 @@ const OrderTab = ({item}) => {
         </div>
     );
 };
+
+OrderTab.propTypes = {
+    item: PropTypes.arrayOf(
+      PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        // Add other properties of your 'item' object with their respective PropTypes
+      })
+    ).isRequired,
+  };
+  
 
 export default OrderTab;

@@ -15,7 +15,6 @@ const Order = () => {
     const salad = menu.filter(item => item.category === 'salad');
     const pizza = menu.filter(item => item.category === 'pizza');
     const soup = menu.filter(item => item.category === 'soup');
-    const offer = menu.filter(item => item.category === 'offered');
     const drinks = menu.filter(item => item.category === 'drinks');
 
     return (

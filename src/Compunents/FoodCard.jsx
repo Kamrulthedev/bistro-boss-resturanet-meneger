@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 
 
 const FoodCard = ({ item }) => {
@@ -16,5 +17,14 @@ const FoodCard = ({ item }) => {
         </div>
     );
 };
-
+FoodCard.propTypes = {
+    item: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      recipe: PropTypes.string.isRequired,
+      // Add other properties of your 'item' object with their respective PropTypes
+    }).isRequired,
+  };
+  
 export default FoodCard;

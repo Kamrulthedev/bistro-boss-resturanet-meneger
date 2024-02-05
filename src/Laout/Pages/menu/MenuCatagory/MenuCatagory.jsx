@@ -3,7 +3,7 @@ import MenuItem from "../../Home/Saherd/Menuitem/MenuItem";
 import PropTypes from 'prop-types';
 
 
-const MenuCatagory = ({ items, title, img }) => {
+const MenuCatagory = ({ items, title }) => {
 
     return (
         <div>
@@ -16,7 +16,7 @@ const MenuCatagory = ({ items, title, img }) => {
                 }
             </div>
             <div className="flex justify-center mt-6 mb-10">
-                <Link to={`/order/${title}`}><button className="uppercase btn border-b-4 border-black">ORDER YOUR FAVOURITE FOOD</button></Link>
+                <Link to={`/order`}><button className="uppercase btn border-b-4 border-black">ORDER YOUR FAVOURITE FOOD</button></Link>
             </div>
         </div>
     );
