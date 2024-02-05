@@ -4,7 +4,6 @@ import img3 from './../../../assets/shop/banner2.jpg';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenu from "../../../Hooks/useMenu";
-import FoodCard from "../../../Compunents/FoodCard";
 import OrderTab from "./OrderTab";
 
 

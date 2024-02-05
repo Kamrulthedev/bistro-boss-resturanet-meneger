@@ -15,7 +15,7 @@ const MenuCatagory = ({ items, title, img }) => {
                     </MenuItem>)
                 }
             </div>
-            <div className="flex justify-center mt-6">
+            <div className="flex justify-center mt-6 mb-10">
                 <Link to={`/order/${title}`}><button className="uppercase btn border-b-4 border-black">ORDER YOUR FAVOURITE FOOD</button></Link>
             </div>
         </div>

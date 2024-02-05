@@ -4,7 +4,6 @@ import imges from './../../../../assets/menu/banner3.jpg'
 import useMenu from '../../../../Hooks/useMenu';
 import MenuCatagory from '../MenuCatagory/MenuCatagory';
 import PopulerItems from '../PopulerItems/PopulerItems';
-import { Link } from 'react-router-dom';
 
 
 const Menu = () => {
@@ -37,32 +36,25 @@ const Menu = () => {
                     title='desserts'
                 ></PopulerItems>
                 {/* dessert Items */}
-                <MenuCatagory items={dessert}
-
-                ></MenuCatagory>
+                <MenuCatagory items={dessert} title='dessert'></MenuCatagory>
                 {/* Pissea Items */}
                 <PopulerItems
-                    title='pizza'
+                    title='pizza' 
                 ></PopulerItems>
                 {/* Pizza Items */}
-                <MenuCatagory items={pizza}
-
-                ></MenuCatagory>
+                <MenuCatagory items={pizza} title='pizza'></MenuCatagory>
                 {/* Pissea Items */}
                 <PopulerItems
                     title='salad'
                 ></PopulerItems>
                 {/* Pizza Items */}
-                <MenuCatagory items={salad}
-
-                ></MenuCatagory>
+                <MenuCatagory items={salad} title='salad'></MenuCatagory>
                 {/* sup Items */}
                 <PopulerItems
                     title='soup'
                 ></PopulerItems>
                 {/* Pizza Items */}
-                <MenuCatagory items={soup}
-                ></MenuCatagory>
+                <MenuCatagory items={soup} title='soup'></MenuCatagory>
             </div>
         </div>
     );
