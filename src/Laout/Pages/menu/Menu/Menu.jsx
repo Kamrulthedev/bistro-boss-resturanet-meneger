@@ -7,7 +7,6 @@ import PopulerItems from '../PopulerItems/PopulerItems';
 
 
 const Menu = () => {
-
     const [menu] = useMenu();
     const dessert = menu.filter(item => item.category === 'dessert');
     const salad = menu.filter(item => item.category === 'salad');

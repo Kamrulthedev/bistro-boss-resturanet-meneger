@@ -30,19 +30,16 @@ const Navber = () => {
                 <div className="navbar-end gap-8 hidden lg:flex ">
                    {AddLinks}
                 </div>
-                <div className="">
-                   
+                <div>
                     <div>
                         <div className="dropdown">
-                            <div tabIndex={0} role="" className=" ">
+                            <div tabIndex={0} role="">
                                 <div className="avatar items-center ">
                                     <div className="w-8 ml-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                                         {/* <img src={user?.photoURL} /> */}
                                     </div>
                                 </div>
-                               
                             </div>
-                            
                         </div>
                     </div>
                 </div>
