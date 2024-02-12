@@ -6,7 +6,9 @@ import Navber from "./Pages/Home/Saherd/Navber/Navber";
 const MainLout = () => {
     const location = useLocation()
     console.log(location)
-    const jestLoginPages = location.pathname.includes('Login')
+    const jestLoginPages = location.pathname.includes('Login') || location.pathname.includes('SignUp')
+   
+    
     return (
         <div>
          { jestLoginPages ||  <Navber></Navber>}
