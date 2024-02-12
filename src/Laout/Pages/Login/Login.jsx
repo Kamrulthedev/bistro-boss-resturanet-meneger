@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import img1 from './../../../assets/others/authentication1.png'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../../providers/AuthProviders';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { CiFacebook } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
@@ -13,6 +13,8 @@ const Login = () => {
   const captchaRaf = useRef()
   const [disabled, setDisabled] = useState(true)
   const { signInUser } = useContext(AuthContext);
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -23,12 +25,17 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+
+
     signInUser(email, password)
       .then(result => {
         const user = result.user;
         console.log(user);
+        navigate(location?. state? location.state: '/');
       })
+      .catch((error) => {
+        console.log(error)
+    })
   }
 
 

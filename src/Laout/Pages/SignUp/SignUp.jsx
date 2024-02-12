@@ -3,8 +3,30 @@ import img1 from './../../../assets/others/authentication1.png';
 import { CiFacebook } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProviders';
 
 const SignUp = () => {
+const { createUaer } = useContext(AuthContext);
+
+const handlerSignUp = e =>{
+    e.preventDefault();
+    const form = e.target;
+    const name = form.Name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name ,email, password);
+
+    createUaer(email, password)
+    .then((result) => {
+        console.log(result.user)
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+} 
+
+
     return (
         <div className="hero min-h-screen bg-gray-200 p-16 ">
         <div className="hero-content flex-col lg:flex-row-reverse border-4 shadow-xl shadow-slate-700">
@@ -16,7 +38,7 @@ const SignUp = () => {
             <div className='text-center '>
               <h1 className='text-2xl font-bold -mb-10'>Sign Up</h1>
             </div>
-            <form onSubmit={'/'} className="card-body">
+            <form onSubmit={handlerSignUp} className="card-body">
             <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -39,7 +61,7 @@ const SignUp = () => {
               </div>
   
               <div className="form-control mt-6">
-                <input  type="submit" value='Sign Up' className="btn btn-ghost uppercase bg-amber-700" name="" id="" />
+                <input  type="submit" value='Sign Up' className="btn btn-ghost uppercase bg-amber-600" name="" id="" />
               </div>
             </form>
             <div className='text-center items-center space-y-3'>

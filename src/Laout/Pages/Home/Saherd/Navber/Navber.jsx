@@ -1,16 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import logo from './../../../../../assets/icon/images.png';
+import { useContext } from "react";
+import { AuthContext } from "../../../../../providers/AuthProviders";
 
 const Navber = () => {
+    const {user, LogOut} = useContext(AuthContext);
+    const location = useLocation()
+    const navigate = useNavigate()
+    
+    const handleLogOut = () => {
+        LogOut()
+            .then(() => {})
+        navigate(location?.state ? location.state : '/')
+            .catch(error => console.log(error))
+    }
 
     const AddLinks = <>
-        <Link className="font-bold mr-6 text-xs hover:text-lime-500" to='/' >HOME</Link>
+        <Link className="font-bold text-xs hover:text-lime-500" to='/' >HOME</Link>
         <Link className="font-bold text-xs hover:text-lime-500 " >CONTACT US</Link>
         <Link className="font-bold text-xs hover:text-lime-500 ">DASHBOARD</Link>
         <Link className="font-bold text-xs hover:text-lime-500 " to='/menu' >OUR MENU</Link>
         <Link className="font-bold text-xs hover:text-lime-500  flex" to='/order'>OUR SHOP<FaCartShopping className="text-xl ml-2" /></Link>
-        <Link className="font-bold text-xs hover:text-lime-500 " to='/Login'>SIGN IN</Link>
+        {user?.email ? <>
+            <button className="font-bold text-xs hover:text-lime-500 " onClick={handleLogOut}>LOG OUT</button>
+        </>
+            :<Link className="font-bold text-xs hover:text-lime-500 " to={'/Login'}>LOGINH</Link>
+        }
     </>
 
     return (
