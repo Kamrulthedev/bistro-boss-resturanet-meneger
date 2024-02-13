@@ -4,21 +4,21 @@ import { createUserWithEmailAndPassword,  onAuthStateChanged, signInWithEmailAnd
 import auth from "../firebase/firebase.config";
 
 
+
 export const AuthContext = createContext(null)
 const AuthProviders = ({ children }) => {
 
   const [user, setUser] = useState(null)
   const [loading, serLoading] = useState(true)
 
-  const signInUser = (email, password) => {
-    serLoading(true)
-    signInWithEmailAndPassword(auth, email, password)
-  }
-
   const createUaer = (email, password) => {
     serLoading(true)
     return createUserWithEmailAndPassword(auth, email, password)
   }
+  const signInUser = (email, password) => {
+    serLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
   const LogOut = () => {
     serLoading(true)

@@ -2,11 +2,12 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import img1 from './../../../assets/others/authentication1.png'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../../providers/AuthProviders';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CiFacebook } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2'
 
 
 const Login = () => {
@@ -15,7 +16,6 @@ const Login = () => {
   const captchaRaf = useRef()
   const [disabled, setDisabled] = useState(true)
   const { signInUser } = useContext(AuthContext);
-  const location = useLocation()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -27,18 +27,51 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-
-
+  
     signInUser(email, password)
       .then((result) => {
-        console.log(result.user);
-        navigate('/'); // Navigate to the home page
+        console.log('Login successful:', result.user);
+        navigate('/');
+        Swal.fire({
+          title: "Login Successfuly",
+          showClass: {
+            popup: `
+              animate__animated
+              animate__fadeInUp
+              animate__faster
+            `
+          },
+          hideClass: {
+            popup: `
+              animate__animated
+              animate__fadeOutDown
+              animate__faster
+            `
+          }
+        });
       })
       .catch((error) => {
-        console.log(error);
+        console.log('Login error:', error);
         setLoginError(error.message);
+        Swal.fire({
+          title: "Is Not Valid User",
+          showClass: {
+            popup: `
+              animate__animated
+              animate__fadeInUp
+              animate__faster
+            `
+          },
+          hideClass: {
+            popup: `
+              animate__animated
+              animate__fadeOutDown
+              animate__faster
+            `
+          }
+        });
       });
-  }
+  };
 
 
   const handlerLoginCaptcha = () => {

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import img1 from './../../../assets/others/authentication1.png';
 import { CiFacebook } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
@@ -6,9 +6,11 @@ import { FaGoogle } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProviders';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2'
 
 const SignUp = () => {
   const { createUaer } = useContext(AuthContext);
+  const navigate = useNavigate()
 
   const handlerSignUp = e => {
     e.preventDefault();
@@ -21,9 +23,44 @@ const SignUp = () => {
     createUaer(email, password)
       .then((result) => {
         console.log(result.user)
+        navigate('/'); 
+        Swal.fire({
+          title: "Registation Successfuly",
+          showClass: {
+            popup: `
+              animate__animated
+              animate__fadeInUp
+              animate__faster
+            `
+          },
+          hideClass: {
+            popup: `
+              animate__animated
+              animate__fadeOutDown
+              animate__faster
+            `
+          }
+        });
       })
       .catch((error) => {
         console.log(error)
+        Swal.fire({
+          title: "Not valid Information",
+          showClass: {
+            popup: `
+              animate__animated
+              animate__fadeInUp
+              animate__faster
+            `
+          },
+          hideClass: {
+            popup: `
+              animate__animated
+              animate__fadeOutDown
+              animate__faster
+            `
+          }
+        });
       })
   }
 
