@@ -52,7 +52,7 @@ const Navber = () => {
                             <div tabIndex={0} role="">
                                 <div className="avatar items-center">
                                     <div className="w-8 ml-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                        {/* <img src={user?.photoURL} /> */}
+                                        <img src={user?.photoURL} />
                                     </div>
                                 </div>
                             </div>

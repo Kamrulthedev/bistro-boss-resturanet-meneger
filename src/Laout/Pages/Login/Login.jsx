@@ -1,22 +1,24 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import img1 from './../../../assets/others/authentication1.png'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../../providers/AuthProviders';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { CiFacebook } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
   const [LoginError, setLoginError] = useState('')
-
-  const captchaRaf = useRef()
+  const navigate = useNavigate();
   const [disabled, setDisabled] = useState(true)
-  const { signInUser } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const { signInUser, signInGoogle } = useContext(AuthContext);
+
+const locations = useLocation();
+  
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -74,8 +76,8 @@ const Login = () => {
   };
 
 
-  const handlerLoginCaptcha = () => {
-    const user_captcha_value = captchaRaf.current.value;
+  const handlerLoginCaptcha = (e) => {
+    const user_captcha_value =e.target.value;
     if (validateCaptcha(user_captcha_value)) {
       setDisabled(false)
     }
@@ -83,6 +85,18 @@ const Login = () => {
       setDisabled(true)
     }
   }
+
+
+  const handlerGoogleLogin = () => {
+    signInGoogle()
+      .then((result) => {
+        console.log(result.user);
+        navigate(locations?.state ? location.state : '/');
+      })
+      .catch((error) => {
+        console.error('Error signing in with Google:', error.code, error.message);
+      });
+  };
 
   return (
     <>
@@ -122,8 +136,7 @@ const Login = () => {
                 <label className="label">
                   <LoadCanvasTemplate />
                 </label>
-                <input type="text" ref={captchaRaf} placeholder="type hear captcha" className="input input-bordered" name='captcha' required />
-                <button onClick={handlerLoginCaptcha} className="btn btn-outline btn-xs mt-2 uppercase">Validate</button>
+                <input onBlur={handlerLoginCaptcha}  type="text"  placeholder="type hear captcha" className="input input-bordered" name='captcha' required />
               </div>
 
               <div className="form-control mt-6">
@@ -136,7 +149,9 @@ const Login = () => {
               <h5>Or sign in with</h5>
               <div className='flex justify-center text-3xl gap-8 '>
                 <CiFacebook />
-                <FaGoogle />
+                <button onClick={handlerGoogleLogin}>
+                    <FaGoogle></FaGoogle>
+                </button>
                 <FaGithub />
               </div>
             </div>
