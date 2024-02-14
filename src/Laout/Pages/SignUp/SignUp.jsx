@@ -6,11 +6,11 @@ import { FaGoogle } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProviders';
 import { Helmet } from 'react-helmet-async';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
   const { createUaer } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handlerSignUp = e => {
     e.preventDefault();
@@ -62,7 +62,7 @@ const SignUp = () => {
           }
         });
       })
-  }
+  };
 
 
   return (
