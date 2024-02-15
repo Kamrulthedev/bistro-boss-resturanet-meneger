@@ -1,17 +1,26 @@
 import PropTypes from 'prop-types';
 import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const FoodCard = ({ item }) => {
-    const { name, image, price, recipe } = item;
+    const { name, image, price, recipe, _id } = item;
     const { user } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
  
     const handlerFoodItem = food => {
         if (user && user.email) {
             // TODO: SEND CARD ITEM TO THE DATABASE
+            console.log(user.email, food)
+            const cartItem = {
+            menuId: _id,
+            email:user.email,
+            name: user.name,
+            image: user.image,
+            price: user.price
+            }
         }
         else {
             Swal.fire({
@@ -25,7 +34,7 @@ const FoodCard = ({ item }) => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     //send to the Login Pages..
-                     navigate('/Login')
+                     navigate('/Login', {state: {from: location}})
                 }
             });
         }

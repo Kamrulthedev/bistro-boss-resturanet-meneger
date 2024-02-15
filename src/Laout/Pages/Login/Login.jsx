@@ -19,6 +19,7 @@ const Login = () => {
   const locations = useLocation();
 
   const from = locations.state?.from?.pathname || "/";
+  console.log('state in the location Login', locations.state)
 
   useEffect(() => {
     loadCaptchaEnginge(6);
