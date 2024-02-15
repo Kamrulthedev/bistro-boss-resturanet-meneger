@@ -148,11 +148,11 @@ const Login = () => {
               <h4>  New here? <Link className='text-orange-700  font-bold' to='/SignUp'>Create a New Account</Link></h4>
               <h5>Or sign in with</h5>
               <div className='flex justify-center text-3xl gap-8 '>
-                <CiFacebook />
+                <CiFacebook className="text-slate-900"></CiFacebook>
                 <button onClick={handlerGoogleLogin}>
-                  <FaGoogle></FaGoogle>
+                  <FaGoogle className='text-slate-900'></FaGoogle>
                 </button>
-                <FaGithub />
+                <FaGithub className='text-slate-900'></FaGithub>
               </div>
             </div>
           </div>

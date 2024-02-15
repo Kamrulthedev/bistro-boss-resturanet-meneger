@@ -9,60 +9,143 @@ import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 
 const SignUp = () => {
-  const { createUaer } = useContext(AuthContext);
+  const { createUaer, UpdateUser, signInGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handlerSignUp = e => {
+  // const handlerSignUp = e => {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const name = form.Name.value;
+  //   const photo = form.PhotoUrl.value;
+  //   const email = form.email.value;
+  //   const password = form.password.value;
+  //   console.log(name, email, password, photo);
+
+  //   createUaer(email, password)
+  //     .then((result) => {
+  //       console.log(result.user)
+  //       UpdateUser(name, photo)
+  //       .then(()=>{
+  //         console.log('user profile info updated')
+  //       })
+  //       .catch(error=>{
+  //         console.log(error)
+  //       })
+  //       navigate('/');
+  //       Swal.fire({
+  //         title: "Registation Successfuly",
+  //         showClass: {
+  //           popup: `
+  //             animate__animated
+  //             animate__fadeInUp
+  //             animate__faster
+  //           `
+  //         },
+  //         hideClass: {
+  //           popup: `
+  //             animate__animated
+  //             animate__fadeOutDown
+  //             animate__faster
+  //           `
+  //         }
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //       Swal.fire({
+  //         title: "Not valid Information",
+  //         showClass: {
+  //           popup: `
+  //             animate__animated
+  //             animate__fadeInUp
+  //             animate__faster
+  //           `
+  //         },
+  //         hideClass: {
+  //           popup: `
+  //             animate__animated
+  //             animate__fadeOutDown
+  //             animate__faster
+  //           `
+  //         }
+  //       });
+  //     })
+  // };
+
+  const handlerSignUp = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.Name.value;
+    const photo = form.PhotoUrl.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
 
-    createUaer(email, password)
+    try {
+      // Create user with email and password
+      const result = await createUaer(email, password);
+
+      // Update user profile with name and photo URL
+      await UpdateUser(name, photo);
+
+      // ... (other code, if any)
+
+      // Navigate to the desired page after successful signup
+      navigate('/');
+
+      // Display success message
+      Swal.fire({
+        title: "Registration Successful",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
+
+    } catch (error) {
+      console.error("Error signing up:", error);
+      // Handle errors or display error messages
+      Swal.fire({
+        title: "Registration Failed",
+        text: error.message,
+        icon: "error",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
+    }
+  };
+  const handlerGoogleLogin = () => {
+    signInGoogle()
       .then((result) => {
-        console.log(result.user)
-        navigate('/'); 
-        Swal.fire({
-          title: "Registation Successfuly",
-          showClass: {
-            popup: `
-              animate__animated
-              animate__fadeInUp
-              animate__faster
-            `
-          },
-          hideClass: {
-            popup: `
-              animate__animated
-              animate__fadeOutDown
-              animate__faster
-            `
-          }
-        });
+        console.log(result.user);
+        navigate('/');
       })
       .catch((error) => {
-        console.log(error)
-        Swal.fire({
-          title: "Not valid Information",
-          showClass: {
-            popup: `
-              animate__animated
-              animate__fadeInUp
-              animate__faster
-            `
-          },
-          hideClass: {
-            popup: `
-              animate__animated
-              animate__fadeOutDown
-              animate__faster
-            `
-          }
-        });
-      })
+        console.error('Error signing in with Google:', error.code, error.message);
+      });
   };
+
 
 
   return (
@@ -90,6 +173,13 @@ const SignUp = () => {
 
               <div className="form-control">
                 <label className="label">
+                  <span className="label-text">Photo</span>
+                </label>
+                <input type="PhotoUrl" placeholder="Type hear PhotoUrl" className="input w-80 input-bordered" name='PhotoUrl' required />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input type="email" placeholder="Type hear" className="input w-80 input-bordered" name='email' required />
@@ -110,9 +200,11 @@ const SignUp = () => {
               <h4>Already registered? <Link className='text-orange-700  font-bold' to='/Login'>Go to log in</Link></h4>
               <h5>Or sign up with</h5>
               <div className='flex justify-center text-3xl gap-8 '>
-                <CiFacebook />
-                <FaGoogle />
-                <FaGithub />
+                <CiFacebook className='text-slate-900' />
+                <button onClick={handlerGoogleLogin}>
+                  <FaGoogle className='text-slate-900'></FaGoogle>
+                </button>
+                <FaGithub className='text-slate-900'/>
               </div>
             </div>
           </div>
