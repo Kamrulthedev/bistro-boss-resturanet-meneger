@@ -1,7 +1,7 @@
 
 
-
 const useCarts = () => {
+   //ten stak quary
    
 };
 
