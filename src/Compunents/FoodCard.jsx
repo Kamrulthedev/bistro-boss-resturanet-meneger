@@ -2,10 +2,11 @@ import PropTypes from 'prop-types';
 import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const FoodCard = ({ item }) => {
-    const { name, image, price, recipe, _id } = item;
+    const {_id, name, image, price, recipe, } = item;
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
@@ -17,10 +18,15 @@ const FoodCard = ({ item }) => {
             const cartItem = {
             menuId: _id,
             email:user.email,
-            name: user.name,
-            image: user.image,
-            price: user.price
+            name,
+            image,
+            price
             }
+            axios.post('http://localhost:5000/cards', cartItem)
+            .then(res =>{
+                console.log(res.data)
+                
+            })
         }
         else {
             Swal.fire({
@@ -59,6 +65,7 @@ const FoodCard = ({ item }) => {
 
 FoodCard.propTypes = {
     item: PropTypes.shape({
+        _id:PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
