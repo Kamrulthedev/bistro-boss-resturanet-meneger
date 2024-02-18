@@ -8,14 +8,14 @@ const useCarts = () => {
    //ten stak quary
    const axiosSeceur = useAxios();
    const { user } = useContext(AuthContext);
-    const { data: cart = [] } = useQuery({
+    const { refetch, data: cart = [] } = useQuery({
       queryKey: ['cart', user?.email],
       queryFn: async () => {
          const res = await axiosSeceur.get(`/cards? email = ${user.email}`)
          return res.data;
       }
    })
-   return [cart]
+   return [cart, refetch]
 };
 
 export default useCarts;

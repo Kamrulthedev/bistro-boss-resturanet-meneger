@@ -24,7 +24,7 @@ const Navber = () => {
         <Link className="font-bold text-xs hover:text-lime-500 ">DASHBOARD</Link>
         <Link className="font-bold text-xs hover:text-lime-500 " to='/menu' >OUR MENU</Link>
         <Link className="font-bold text-xs hover:text-lime-500  flex" to='/order'>OUR SHOP<FaCartShopping className="text-xl ml-2 w-6 h-6" />
-                <div className="badge badge-secondary absolute w-8 -ml-2 mt-2 relative">{cart.length}</div>
+                <div className="badge badge-secondary absolute w-8 -ml-2 mt-2 relative">+{cart.length}</div>
             </Link>
         {user?.email ? <>
             <button className="font-bold text-xs hover:text-lime-500 " onClick={handleLogOut}>LOG OUT</button>
