@@ -20,10 +20,12 @@ const Navber = () => {
 
     const AddLinks = <>
         <Link className="font-bold text-xs hover:text-lime-500" to='/' >HOME</Link>
-        <Link className="font-bold text-xs hover:text-lime-500 " >CONTACT US</Link>
-        <Link className="font-bold text-xs hover:text-lime-500 ">DASHBOARD</Link>
+        <Link className="font-bold text-xs hover:text-lime-500" >CONTACT US</Link>
+        <Link className="font-bold text-xs hover:text-lime-500" >DASHBOARD</Link>
         <Link className="font-bold text-xs hover:text-lime-500 " to='/menu' >OUR MENU</Link>
-        <Link className="font-bold text-xs hover:text-lime-500  flex" to='/order'>OUR SHOP<FaCartShopping className="text-xl ml-2 w-6 h-6" />
+        <Link className="font-bold text-xs hover:text-lime-500  flex" to='/order' >OUR FOOD</Link>
+            <Link className="flex " to='/Deshbord/Cart'>
+            <FaCartShopping className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />
                 <div className="badge badge-secondary absolute w-8 -ml-2 mt-2 relative">+{cart.length}</div>
             </Link>
         {user?.email ? <>
@@ -45,13 +47,13 @@ const Navber = () => {
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-slate-950 rounded-box w-52">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] text-white p-2 shadow bg-base-100 rounded-box w-52">
                             {AddLinks}
                         </ul>
                     </div>
                     <a className="btn btn-ghost h-10 w-48 items-center "><img className="rounded-lg" src={logo} alt="" /></a>
                 </div>
-                <div className="navbar-end -ml-24 gap-6 hidden lg:flex ">
+                <div className="navbar-end  gap-6 -ml-24 hidden lg:flex ">
                     {AddLinks}
                 </div>
                 <div>
