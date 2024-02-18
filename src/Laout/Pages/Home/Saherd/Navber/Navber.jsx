@@ -3,9 +3,11 @@ import { FaCartShopping } from "react-icons/fa6";
 import logo from './../../../../../assets/icon/images.png';
 import { useContext } from "react";
 import { AuthContext } from "../../../../../providers/AuthProviders";
+import useCarts from "../../../../../Hooks/useCarts";
 
 const Navber = () => {
     const { user, LogOut } = useContext(AuthContext);
+    const [ cart ] = useCarts(); 
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -21,7 +23,9 @@ const Navber = () => {
         <Link className="font-bold text-xs hover:text-lime-500 " >CONTACT US</Link>
         <Link className="font-bold text-xs hover:text-lime-500 ">DASHBOARD</Link>
         <Link className="font-bold text-xs hover:text-lime-500 " to='/menu' >OUR MENU</Link>
-        <Link className="font-bold text-xs hover:text-lime-500  flex" to='/order'>OUR SHOP<FaCartShopping className="text-xl ml-2" /></Link>
+        <Link className="font-bold text-xs hover:text-lime-500  flex" to='/order'>OUR SHOP<FaCartShopping className="text-xl ml-2 w-6 h-6" />
+                <div className="badge badge-secondary absolute w-8 -ml-2 mt-2 relative">{cart.length}</div>
+            </Link>
         {user?.email ? <>
             <button className="font-bold text-xs hover:text-lime-500 " onClick={handleLogOut}>LOG OUT</button>
         </>
@@ -29,9 +33,9 @@ const Navber = () => {
         }
     </>
 
-    const hanlerProfileClick = () =>{
-        
-    } 
+    const hanlerProfileClick = () => {
+
+    }
 
     return (
         <>
@@ -47,7 +51,7 @@ const Navber = () => {
                     </div>
                     <a className="btn btn-ghost h-10 w-48 items-center "><img className="rounded-lg" src={logo} alt="" /></a>
                 </div>
-                <div className="navbar-end gap-6 hidden lg:flex ">
+                <div className="navbar-end -ml-24 gap-6 hidden lg:flex ">
                     {AddLinks}
                 </div>
                 <div>
