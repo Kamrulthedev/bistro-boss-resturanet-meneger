@@ -9,7 +9,7 @@ import { TiContacts, TiShoppingBag, TiThMenu } from "react-icons/ti";
 const Deshbord = () => {
     return (
         <div className="flex">
-            <div className="w-72 min-h-full bg-amber-300">
+            <div className="lg:w-72 w-40 min-h-screen bg-amber-300">
                 <div className="text-center mt-10 mb-10">
                     <h1 className="text-3xl font-bold text-black">BISTRO BOSS</h1>
                     <p className="text-2xl font-semibold text-black">RESTAURANT</p>

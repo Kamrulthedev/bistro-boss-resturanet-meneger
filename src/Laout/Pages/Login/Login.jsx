@@ -135,7 +135,7 @@ const Login = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <LoadCanvasTemplate />
+                  <LoadCanvasTemplate/>
                 </label>
                 <input onBlur={handlerLoginCaptcha} type="text" placeholder="type hear captcha" className="input input-bordered" name='captcha' required />
               </div>
