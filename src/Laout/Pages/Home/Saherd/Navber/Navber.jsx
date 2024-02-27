@@ -19,7 +19,7 @@ const Navber = () => {
     }
 
     const AddLinks = <>
-        <Link className="font-bold text-xs hover:text-lime-500" to='/' >HOME</Link>
+        <Link className="font-bold text-xs hover:text-lime-500 " to='/' >HOME</Link>
         <Link className="font-bold text-xs hover:text-lime-500" >CONTACT US</Link>
         <Link className="font-bold text-xs hover:text-lime-500" >DASHBOARD</Link>
         <Link className="font-bold text-xs hover:text-lime-500 " to='/menu' >OUR MENU</Link>
@@ -34,9 +34,7 @@ const Navber = () => {
             : <Link className="font-bold text-xs hover:text-lime-500 " to={'/Login'}>LOGINH</Link>
         }
     </>
-
     const hanlerProfileClick = () => {
-
     }
 
     return (
@@ -53,7 +51,7 @@ const Navber = () => {
                     </div>
                     <a className="btn btn-ghost h-10 w-48 items-center "><img className="rounded-lg" src={logo} alt="" /></a>
                 </div>
-                <div className="navbar-end  gap-6 -ml-24 hidden lg:flex ">
+                <div className="  gap-5 -ml-28 hidden lg:flex ">
                     {AddLinks}
                 </div>
                 <div>

@@ -38,18 +38,16 @@ const Login = () => {
         Swal.fire({
           title: "Login Successfuly",
           showClass: {
-            popup: `
+            popup:`
               animate__animated
               animate__fadeInUp
-              animate__faster
-            `
+              animate__faster`
           },
           hideClass: {
             popup: `
               animate__animated
               animate__fadeOutDown
-              animate__faster
-            `
+              animate__faster`
           }
         });
       })
@@ -59,18 +57,16 @@ const Login = () => {
         Swal.fire({
           title: "Is Not Valid User",
           showClass: {
-            popup: `
+            popup:`
               animate__animated
               animate__fadeInUp
-              animate__faster
-            `
+              animate__faster`
           },
           hideClass: {
-            popup: `
+            popup:`
               animate__animated
               animate__fadeOutDown
-              animate__faster
-            `
+              animate__faster`
           }
         });
       });

@@ -7,72 +7,15 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProviders';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../../Hooks/useAxiosPublic';
+
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const { createUaer, UpdateUser, signInGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // const handlerSignUp = e => {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const name = form.Name.value;
-  //   const photo = form.PhotoUrl.value;
-  //   const email = form.email.value;
-  //   const password = form.password.value;
-  //   console.log(name, email, password, photo);
-
-  //   createUaer(email, password)
-  //     .then((result) => {
-  //       console.log(result.user)
-  //       UpdateUser(name, photo)
-  //       .then(()=>{
-  //         console.log('user profile info updated')
-  //       })
-  //       .catch(error=>{
-  //         console.log(error)
-  //       })
-  //       navigate('/');
-  //       Swal.fire({
-  //         title: "Registation Successfuly",
-  //         showClass: {
-  //           popup: `
-  //             animate__animated
-  //             animate__fadeInUp
-  //             animate__faster
-  //           `
-  //         },
-  //         hideClass: {
-  //           popup: `
-  //             animate__animated
-  //             animate__fadeOutDown
-  //             animate__faster
-  //           `
-  //         }
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log(error)
-  //       Swal.fire({
-  //         title: "Not valid Information",
-  //         showClass: {
-  //           popup: `
-  //             animate__animated
-  //             animate__fadeInUp
-  //             animate__faster
-  //           `
-  //         },
-  //         hideClass: {
-  //           popup: `
-  //             animate__animated
-  //             animate__fadeOutDown
-  //             animate__faster
-  //           `
-  //         }
-  //       });
-  //     })
-  // };
-
-  const handlerSignUp = async (e) => {
+  const handlerSignUp = e => {
     e.preventDefault();
     const form = e.target;
     const name = form.Name.value;
@@ -80,61 +23,137 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    try {
-      // Create user with email and password
-      const result = await createUaer(email, password);
 
-      // Update user profile with name and photo URL
-      await UpdateUser(name, photo);
-
-      // ... (other code, if any)
-
-      // Navigate to the desired page after successful signup
-      navigate('/');
-
-      // Display success message
-      Swal.fire({
-        title: "Registration Successful",
-        showClass: {
-          popup: `
-            animate__animated
-            animate__fadeInUp
-            animate__faster
-          `
-        },
-        hideClass: {
-          popup: `
-            animate__animated
-            animate__fadeOutDown
-            animate__faster
-          `
-        }
-      });
-
-    } catch (error) {
-      console.error("Error signing up:", error);
-      // Handle errors or display error messages
-      Swal.fire({
-        title: "Registration Failed",
-        text: error.message,
-        icon: "error",
-        showClass: {
-          popup: `
-            animate__animated
-            animate__fadeInUp
-            animate__faster
-          `
-        },
-        hideClass: {
-          popup: `
-            animate__animated
-            animate__fadeOutDown
-            animate__faster
-          `
-        }
-      });
+    const userInfo = {
+      name: name,
+      email: email
     }
+    createUaer(email, password)
+      .then((result) => {
+        console.log(result.user)
+        UpdateUser(name, photo)
+          .then(() => {
+            //Cerate user entry in the database
+
+            axiosPublic.post('/users', userInfo)
+              .then(res => {
+                if (res.data.insertedId) {
+                  Swal.fire({
+                    title: "Registation Successfuly",
+                    showClass: {
+                      popup: `
+                      animate__animated
+                      animate__fadeInUp
+                      animate__faster
+                    `
+                    },
+                    hideClass: {
+                      popup: `
+                      animate__animated
+                      animate__fadeOutDown
+                      animate__faster
+                    `
+                    }
+                  });
+                  console.log('user added database')
+                }
+              })
+
+            console.log('user profile info updated')
+          })
+          .catch(error => {
+            console.log(error)
+          })
+        navigate('/');
+
+      })
+      .catch((error) => {
+        console.log(error)
+        Swal.fire({
+          title: "Not valid Information",
+          showClass: {
+            popup: `
+              animate__animated
+              animate__fadeInUp
+              animate__faster
+            `
+          },
+          hideClass: {
+            popup: `
+              animate__animated
+              animate__fadeOutDown
+              animate__faster
+            `
+          }
+        });
+      })
   };
+
+  // const handlerSignUp = async (e) => {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const name = form.Name.value;
+  //   const photo = form.PhotoUrl.value;
+  //   const email = form.email.value;
+  //   const password = form.password.value;
+
+  //   try {
+  //     // Create user with email and password
+  //     const result = await createUaer(email, password);
+
+  //     // Update user profile with name and photo URL
+  //     await UpdateUser(name, photo);
+
+  //     // ... (other code, if any)
+
+  //     // Navigate to the desired page after successful signup
+  //     navigate('/');
+
+  //     // Display success message
+  //     Swal.fire({
+  //       title: "Registration Successful",
+  //       showClass: {
+  //         popup: `
+  //           animate__animated
+  //           animate__fadeInUp
+  //           animate__faster
+  //         `
+  //       },
+  //       hideClass: {
+  //         popup: `
+  //           animate__animated
+  //           animate__fadeOutDown
+  //           animate__faster
+  //         `
+  //       }
+  //     });
+
+  //   } catch (error) {
+  //     console.error("Error signing up:", error);
+  //     // Handle errors or display error messages
+  //     Swal.fire({
+  //       title: "Registration Failed",
+  //       text: error.message,
+  //       icon: "error",
+  //       showClass: {
+  //         popup: `
+  //           animate__animated
+  //           animate__fadeInUp
+  //           animate__faster
+  //         `
+  //       },
+  //       hideClass: {
+  //         popup: `
+  //           animate__animated
+  //           animate__fadeOutDown
+  //           animate__faster
+  //         `
+  //       }
+  //     });
+  //   }
+  // };
+
+
   const handlerGoogleLogin = () => {
     signInGoogle()
       .then((result) => {
@@ -204,7 +223,7 @@ const SignUp = () => {
                 <button onClick={handlerGoogleLogin}>
                   <FaGoogle className='text-slate-900'></FaGoogle>
                 </button>
-                <FaGithub className='text-slate-900'/>
+                <FaGithub className='text-slate-900' />
               </div>
             </div>
           </div>
