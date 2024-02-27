@@ -8,12 +8,14 @@ import SignUp from "./Pages/SignUp/SignUp";
 import Deshbord from "./Deshbord/Deshbord";
 import Cart from "./Pages/Deshbord/Cart/Cart";
 import PrivateRout from "./PrivateRout";
+import ErrorPages from "../ErrorPages/ErrorPages";
 
 
 const router = createBrowserRouter([
     {
         path:'/',
         element:<MainLout></MainLout>,
+        errorElement:<ErrorPages></ErrorPages>,
         children:[
             {
                 path:'/',
@@ -40,6 +42,7 @@ const router = createBrowserRouter([
     {
         path: '/Deshbord', 
         element: <PrivateRout> <Deshbord></Deshbord></PrivateRout>,
+        errorElement:<ErrorPages></ErrorPages>,
         children: [
             {
                 path: 'Cart',

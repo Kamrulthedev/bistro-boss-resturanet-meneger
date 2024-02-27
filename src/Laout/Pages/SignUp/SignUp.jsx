@@ -15,6 +15,8 @@ const SignUp = () => {
   const { createUaer, UpdateUser, signInGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
 
+
+
   const handlerSignUp = e => {
     e.preventDefault();
     const form = e.target;
@@ -89,76 +91,22 @@ const SignUp = () => {
       })
   };
 
-  // const handlerSignUp = async (e) => {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const name = form.Name.value;
-  //   const photo = form.PhotoUrl.value;
-  //   const email = form.email.value;
-  //   const password = form.password.value;
-
-  //   try {
-  //     // Create user with email and password
-  //     const result = await createUaer(email, password);
-
-  //     // Update user profile with name and photo URL
-  //     await UpdateUser(name, photo);
-
-  //     // ... (other code, if any)
-
-  //     // Navigate to the desired page after successful signup
-  //     navigate('/');
-
-  //     // Display success message
-  //     Swal.fire({
-  //       title: "Registration Successful",
-  //       showClass: {
-  //         popup: `
-  //           animate__animated
-  //           animate__fadeInUp
-  //           animate__faster
-  //         `
-  //       },
-  //       hideClass: {
-  //         popup: `
-  //           animate__animated
-  //           animate__fadeOutDown
-  //           animate__faster
-  //         `
-  //       }
-  //     });
-
-  //   } catch (error) {
-  //     console.error("Error signing up:", error);
-  //     // Handle errors or display error messages
-  //     Swal.fire({
-  //       title: "Registration Failed",
-  //       text: error.message,
-  //       icon: "error",
-  //       showClass: {
-  //         popup: `
-  //           animate__animated
-  //           animate__fadeInUp
-  //           animate__faster
-  //         `
-  //       },
-  //       hideClass: {
-  //         popup: `
-  //           animate__animated
-  //           animate__fadeOutDown
-  //           animate__faster
-  //         `
-  //       }
-  //     });
-  //   }
-  // };
+  
 
 
   const handlerGoogleLogin = () => {
     signInGoogle()
       .then((result) => {
         console.log(result.user);
-        navigate('/');
+        const userInFo = {
+          email: result.user?.email,
+          name: result.user.displayName
+        }
+        axiosPublic.post('/users',userInFo)
+        .then(res =>{
+          console.log(res.data);
+          navigate('/');
+        })
       })
       .catch((error) => {
         console.error('Error signing in with Google:', error.code, error.message);
