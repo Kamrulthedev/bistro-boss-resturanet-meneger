@@ -35,7 +35,7 @@ const Deshbord = () => {
                             <li> <NavLink to='/Deshbord/Booking' className='hover:text-blue-800 text-black'>
                                 <FaBook className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />MANAGE BOOKINGS</NavLink></li>
 
-                            <li> <NavLink to='/Deshbord/users' className='hover:text-blue-800 text-black'>
+                            <li> <NavLink to='/Deshbord/AllUsers' className='hover:text-blue-800 text-black'>
                                 <FaUsers className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />ALL USERS</NavLink></li>
 
                         </> :
