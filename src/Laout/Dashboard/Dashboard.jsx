@@ -23,39 +23,39 @@ const Deshbord = () => {
                 <ul className="menu gap-4">
                     {
                         isAdmin ? <>
-                            <li> <NavLink to='/Deshbord/AdminHome' className='hover:text-blue-800 text-black'>
+                            <li> <NavLink to='/Dashboard/AdminHome' className='hover:text-blue-800 text-black'>
                                 <FaHome className="text-xl ml-2 w-6 h-6 hover:text-lime-500 text-black" />ADMIN HOME</NavLink></li>
 
-                            <li> <NavLink to='/Deshbord/AddItems' className='hover:text-blue-800 text-black'>
+                            <li> <NavLink to='/Dashboard/AddItems' className='hover:text-blue-800 text-black'>
                                 <FaUtensils className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />ADD ITEMS</NavLink></li>
 
-                            <li> <NavLink to='/Deshbord/manegeItems' className='hover:text-blue-800 text-black'>
+                            <li> <NavLink to='/Dashboard/manegeItems' className='hover:text-blue-800 text-black'>
                                 <FaList className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />MANAGE ITEMS</NavLink></li>
 
-                            <li> <NavLink to='/Deshbord/Booking' className='hover:text-blue-800 text-black'>
+                            <li> <NavLink to='/Dashboard/Booking' className='hover:text-blue-800 text-black'>
                                 <FaBook className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />MANAGE BOOKINGS</NavLink></li>
 
-                            <li> <NavLink to='/Deshbord/AllUsers' className='hover:text-blue-800 text-black'>
+                            <li> <NavLink to='/Dashboard/AllUsers' className='hover:text-blue-800 text-black'>
                                 <FaUsers className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />ALL USERS</NavLink></li>
 
                         </> :
                             <>
-                                <li> <NavLink to='/Deshbord/Home' className='hover:text-blue-800 text-black'>
+                                <li> <NavLink to='/Dashboard/Home' className='hover:text-blue-800 text-black'>
                                     <FaHome className="text-xl ml-2 w-6 h-6 hover:text-lime-500 text-black" />UAER HOME</NavLink></li>
 
-                                <li> <NavLink to='/Deshbord/Reservation' className='hover:text-blue-800 text-black'>
+                                <li> <NavLink to='/Dashboard/Reservation' className='hover:text-blue-800 text-black'>
                                     <FaCalendar className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />RESERVATION</NavLink></li>
 
-                                <li> <NavLink to='/Deshbord/Payment' className='hover:text-blue-800 text-black'>
+                                <li> <NavLink to='/Dashboard/Payment' className='hover:text-blue-800 text-black'>
                                     <MdPayment className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />PAYMENT HISTORY</NavLink></li>
 
-                                <li> <NavLink to='/Deshbord/Cart' className='hover:text-blue-800 text-black'>
+                                <li> <NavLink to='/Dashboard/Cart' className='hover:text-blue-800 text-black'>
                                     <FaCartShopping className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />MY CART</NavLink></li>
 
-                                <li> <NavLink to='/Deshbord/Review' className='hover:text-blue-800 text-black'>
+                                <li> <NavLink to='/Dashboard/Review' className='hover:text-blue-800 text-black'>
                                     <MdPreview className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />ADD REVIWE</NavLink></li>
 
-                                <li> <NavLink to='/Deshbord/Booking' className='hover:text-blue-800 text-black'>
+                                <li> <NavLink to='/Dashboard/Booking' className='hover:text-blue-800 text-black'>
                                     <MdMedicalInformation className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />ADD BOOKING</NavLink></li>
                             </>
                     }
@@ -72,7 +72,7 @@ const Deshbord = () => {
 
                     <li> <NavLink to='/order' className='hover:text-blue-800 text-black' > <TiShoppingBag className="text-xl ml-2 w-6 h-6 hover:text-lime-500 text-black" />SHOP</NavLink></li>
 
-                    <li> <NavLink to='/Deshbord/Contect' className='hover:text-blue-800 text-black'> <MdOutlineEmail className="text-xl ml-2 w-6 h-6 hover:text-lime-500 text-black" />CONTECT</NavLink></li>
+                    <li> <NavLink to='/Dashboard/Contect' className='hover:text-blue-800 text-black'> <MdOutlineEmail className="text-xl ml-2 w-6 h-6 hover:text-lime-500 text-black" />CONTECT</NavLink></li>
                 </ul>
             </div>
             <div className="flex-1">

@@ -5,11 +5,12 @@ import Menu from "./Pages/menu/Menu/Menu";
 import Order from "./Pages/Order/Order";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
-import Deshbord from "./Deshbord/Deshbord";
+import Deshbord from "./Dashboard/Dashboard";
 import Cart from "./Pages/Deshbord/Cart/Cart";
 import PrivateRout from "./PrivateRout";
 import ErrorPages from "../ErrorPages/ErrorPages";
 import AllUsers from "./Pages/Deshbord/AllUsers/AllUsers";
+import AdminHome from "./Pages/Deshbord/AdminHome/AdminHome";
 
 
 
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: "/Deshbord",
+        path: "/Dashboard",
         element: <PrivateRout> <Deshbord></Deshbord></PrivateRout>,
         errorElement: <ErrorPages></ErrorPages>,
         children: [
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
             {
                 path: "AllUsers",
                 element: <AllUsers></AllUsers>
+            },
+            {
+                path: "AdminHome",
+                element:<AdminHome></AdminHome>
             }
         ]
     }
