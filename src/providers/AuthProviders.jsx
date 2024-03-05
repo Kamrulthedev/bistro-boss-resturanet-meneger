@@ -1,13 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { GoogleAuthProvider, createUserWithEmailAndPassword,  onAuthStateChanged, signInWithEmailAndPassword, signInWithRedirect, signOut, updateProfile  } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithRedirect, signOut, updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 
 
 export const AuthContext = createContext(null);
 const AuthProviders = ({ children }) => {
 
+
+  const axsiocPablic = useAxiosPublic();
   const provider = new GoogleAuthProvider();
 
   const [user, setUser] = useState(null)
@@ -22,27 +25,40 @@ const AuthProviders = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const signInGoogle = () =>{
+  const signInGoogle = () => {
     serLoading(true)
     return signInWithRedirect(auth, provider);
 
   }
 
-  const UpdateUser = (name, photo) =>{
-   return updateProfile(auth.currentUser, {
+  const UpdateUser = (name, photo) => {
+    return updateProfile(auth.currentUser, {
       displayName: name, photoURL: photo
     })
   }
 
   const LogOut = () => {
     serLoading(true)
-     return signOut(auth)
+    return signOut(auth)
   }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
-      console.log('current user', currentUser);
+      if (createUaer) {
+        //get token and stord cliend
+        const userInfo = { email: currentUser.email };
+        axsiocPablic.post('jwt', userInfo)
+          .then(res => {
+            if (res.data.token) {
+              localStorage.setItem('access-token', res.data.token)
+            }
+          })
+      }
+      else {
+        //TODO: remove token and cliend stord and remove and other stores
+        localStorage.removeItem('access-token');
+      }
       serLoading(false);
     });
     return () => {

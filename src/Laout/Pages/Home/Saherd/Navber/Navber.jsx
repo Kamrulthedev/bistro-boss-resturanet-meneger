@@ -21,7 +21,7 @@ const Navber = () => {
     const AddLinks = <>
         <Link className="font-bold text-xs hover:text-lime-500 " to='/' >HOME</Link>
         <Link className="font-bold text-xs hover:text-lime-500" >CONTACT US</Link>
-        <Link className="font-bold text-xs hover:text-lime-500" to='/Deshbord' >DASHBOARD</Link>
+        <Link className="font-bold text-xs hover:text-lime-500" to='/Dashboard' >DASHBOARD</Link>
         <Link className="font-bold text-xs hover:text-lime-500 " to='/menu' >OUR MENU</Link>
         <Link className="font-bold text-xs hover:text-lime-500  flex" to='/order' >OUR FOOD</Link>
         <Link className="flex " to='/Deshbord/Cart'>
