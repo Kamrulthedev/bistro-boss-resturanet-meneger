@@ -76,11 +76,12 @@ const AllUsers = () => {
 
     return (
         <div className="">
-            <div className='text-center space-y-6 mb-8 mt-10' >
+                 <div className='flex flex-col items-center space-y-6 mb-8 mt-16 justify-center'>
+
                 <h1 className='text-[#D99904] text-lg '>---How Many---</h1>
-                <p className='border  text-center flex-shrink-0 ml-60 mr-60'></p>
+                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
                 <h3 className='text-3xl '>MANAGE ALL USERS</h3>
-                <p className='border dark:border-slate-950 text-center flex-shrink-0 ml-60 mr-60'></p>
+                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
             </div>
             <div className="bg-stone-100 p-6 mx-7">
                 <h1 className="uppercase ml-10 text-2xl font-semibold ">Total users: {users.length}</h1>

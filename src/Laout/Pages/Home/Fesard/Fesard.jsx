@@ -4,11 +4,12 @@ const Fesard = () => {
     return (
         <div className="hero min-h-screen mb-20 bg-fixed" style={{backgroundImage: 'url(https://i.ibb.co/PFyQrDp/banner.jpg)'}}>
         <div className="hero-overlay bg-opacity-60">
-            <div className='text-center space-y-6 mb-8 text-white mt-20'>
+        <div className='flex flex-col items-center space-y-6 mb-8 mt-16 justify-center'>
+
                 <h1 className='text-[#D99904] text-lg '>---Check it out---</h1>
-                <p className='border  w-[424px] h-[4px] text-center flex-shrink-0 ml-[430px]'></p>
+                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
                 <h3 className='text-4xl'>FROM OUR MENU</h3>
-                <p className='border  w-[424px] h-[4px] text-center flex-shrink-0 ml-[430px] '></p>
+                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
             </div>
             <div className='flex justify-center gap-8 text-white'>
                 <div>

@@ -8,12 +8,12 @@ const Contact = () => {
         <div>
             <Navber></Navber>
             <ContactBannar></ContactBannar>
-            <div className='text-center space-y-6 mb-8 mt-16' >
-                    <h1 className='text-[#D99904] text-lg'>---Don't miss---</h1>
-                    <p className='border  w-[424px] h-[4px] text-center flex-shrink-0 ml-[360px]'></p>
-                    <h3 className='text-4xl'>TODAY'S OFFER</h3>
-                    <p className='border  w-[424px] h-[4px] text-center flex-shrink-0 ml-[360px]'></p>
-                </div>
+            <div className='flex flex-col items-center space-y-6 mb-8 mt-16 justify-center'>
+                <h1 className='text-[#D99904] text-lg'>---Visit Us---</h1>
+                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
+                <h3 className='text-4xl'>OUR LOCATION</h3>
+                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
+            </div>
 
             <Footer></Footer>
         </div>

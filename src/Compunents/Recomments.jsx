@@ -3,11 +3,11 @@
 const Recomments = () => {
     return (
         <div className="mb-20">
-            <div className='text-center space-y-6 mb-8' >
+            <div className='flex flex-col items-center space-y-6 mb-8 mt-16 justify-center'>
                 <h1 className='text-[#D99904] text-lg '>---Should Try---</h1>
-                <p className='border  w-[424px] h-[4px] text-center flex-shrink-0 ml-[430px]'></p>
+                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
                 <h3 className='text-4xl'>CHEF RECOMMENDS</h3>
-                <p className='border  w-[424px] h-[4px] text-center flex-shrink-0 ml-[430px] '></p>
+                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
             </div>
             <div className="grid grid-cols-3">
                 {/* card 1 */}
