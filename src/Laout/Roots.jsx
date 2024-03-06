@@ -11,6 +11,7 @@ import PrivateRout from "./PrivateRout";
 import ErrorPages from "../ErrorPages/ErrorPages";
 import AllUsers from "./Pages/Deshbord/AllUsers/AllUsers";
 import AdminHome from "./Pages/Deshbord/AdminHome/AdminHome";
+import Contact from "./Pages/Contact/Contact/Contact";
 
 
 
@@ -60,6 +61,13 @@ const router = createBrowserRouter([
                 path: "AdminHome",
                 element:<AdminHome></AdminHome>
             }
+        ]
+    },
+    {
+        path:'/Contact',
+        element:<Contact></Contact>,
+        children:[
+            
         ]
     }
 ])
