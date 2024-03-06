@@ -1,20 +1,18 @@
 
 import Footer from "../../Home/Saherd/Footer/Footer";
 import Navber from "../../Home/Saherd/Navber/Navber";
+import Title from "../../Home/Saherd/Title/Title";
 import ContactBannar from "../ContactBannar/ContactBannar";
+import Location from "../Location/Location";
 
 const Contact = () => {
     return (
         <div>
             <Navber></Navber>
             <ContactBannar></ContactBannar>
-            <div className='flex flex-col items-center space-y-6 mb-8 mt-16 justify-center'>
-                <h1 className='text-[#D99904] text-lg'>---Visit Us---</h1>
-                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
-                <h3 className='text-4xl'>OUR LOCATION</h3>
-                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
-            </div>
-
+          <Title subcontitle={'---Visit Us---'} subconLocation={'OUR LOCATION'}></Title>
+             <Location></Location>
+             <Title subcontitle={'---Send Us a Message---'} subconLocation={'CONTACT FORM'}></Title>
             <Footer></Footer>
         </div>
     );
