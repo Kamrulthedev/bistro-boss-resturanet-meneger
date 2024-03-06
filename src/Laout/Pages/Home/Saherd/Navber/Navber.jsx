@@ -23,7 +23,7 @@ const Navber = () => {
         <Link className="font-bold text-xs hover:text-lime-500" to='/Contact'>CONTACT US</Link>
         <Link className="font-bold text-xs hover:text-lime-500" to='/Dashboard/AdminHome' >DASHBOARD</Link>
         <Link className="font-bold text-xs hover:text-lime-500 " to='/menu' >OUR MENU</Link>
-        <Link className="font-bold text-xs hover:text-lime-500  flex" to='/order' >OUR FOOD</Link>
+        <Link className="font-bold text-xs hover:text-lime-500  flex" to='/order ' >OUR FOOD</Link>
         <Link className="flex " to='/Dashboard/Cart'>
             <FaCartShopping className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />
             <div className="badge badge-secondary absolute w-8 -ml-2 mt-2 relative">+{cart.length}</div>
