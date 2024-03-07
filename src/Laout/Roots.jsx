@@ -13,6 +13,9 @@ import AllUsers from "./Pages/Deshbord/AllUsers/AllUsers";
 import AdminHome from "./Pages/Deshbord/AdminHome/AdminHome";
 import Contact from "./Pages/Contact/Contact/Contact";
 import AddItem from "./Pages/Deshbord/AddItem/AddItem";
+import ManegeItems from "./Pages/Deshbord/ManegeItems/ManegeItems";
+import UpdateItem from "./Pages/Deshbord/UpdateItem/UpdateItem";
+import ManegeBooking from "./Pages/Deshbord/MenegeBooking/ManegeBooking";
 
 
 
@@ -65,6 +68,18 @@ const router = createBrowserRouter([
             {
                 path:'AddItems',
                 element:<AddItem></AddItem>
+            },
+            {
+                path:'manegeItems',
+                element:<ManegeItems></ManegeItems>
+            },
+            {
+                path:'Booking',
+                element:<ManegeBooking></ManegeBooking>
+            },
+            {
+                path:'UpdateItem',
+                element:<UpdateItem></UpdateItem>
             }
         ]
     },
