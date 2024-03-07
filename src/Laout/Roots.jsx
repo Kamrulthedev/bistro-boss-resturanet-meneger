@@ -12,6 +12,7 @@ import ErrorPages from "../ErrorPages/ErrorPages";
 import AllUsers from "./Pages/Deshbord/AllUsers/AllUsers";
 import AdminHome from "./Pages/Deshbord/AdminHome/AdminHome";
 import Contact from "./Pages/Contact/Contact/Contact";
+import AddItem from "./Pages/Deshbord/AddItem/AddItem";
 
 
 
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
             {
                 path: "AdminHome",
                 element:<AdminHome></AdminHome>
+            },
+            {
+                path:'AddItems',
+                element:<AddItem></AddItem>
             }
         ]
     },
