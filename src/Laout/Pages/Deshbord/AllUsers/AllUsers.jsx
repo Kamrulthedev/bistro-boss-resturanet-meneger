@@ -16,7 +16,6 @@ const AllUsers = () => {
     });
     
 
-
     const hanlderMakeAdmin = user =>{
        axiosSeceur.patch(`/users/admin/${user._id}`)
        .then(res =>{
