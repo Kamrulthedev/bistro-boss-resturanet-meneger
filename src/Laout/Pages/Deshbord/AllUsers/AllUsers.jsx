@@ -37,7 +37,7 @@ const AllUsers = () => {
                 timer: 1500
               });
         }
-       })
+       });
     };
 
 

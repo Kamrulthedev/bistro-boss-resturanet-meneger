@@ -6,6 +6,7 @@ import axios from "axios";
 
 const useAxios = () => {
     axiosSeceur.interceptors.request.use(function(config){
+        console.log('console log by intarsectoes')
         return config;
     },
     function(error){
