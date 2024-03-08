@@ -6,11 +6,12 @@ import { MdPreview } from "react-icons/md";
 import { MdPayment } from "react-icons/md";
 import { TiShoppingBag, TiThMenu } from "react-icons/ti";
 import { MdOutlineEmail } from "react-icons/md";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Deshbord = () => {
 
     //TODO: get isAdmin value form the datavase
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
 
     return (
