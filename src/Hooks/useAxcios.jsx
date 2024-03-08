@@ -6,7 +6,9 @@ import axios from "axios";
 
 const useAxios = () => {
     axiosSeceur.interceptors.request.use(function(config){
-        console.log('console log by intarsectoes')
+        const token = localStorage.getItem('access-token');
+        console.log('console log by intarsectoes', token)
+        config.headers.authorization = `Bearer ${token}`;
         return config;
     },
     function(error){
