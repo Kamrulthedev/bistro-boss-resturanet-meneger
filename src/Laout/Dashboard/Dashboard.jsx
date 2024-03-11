@@ -12,6 +12,7 @@ const Deshbord = () => {
 
     //TODO: get isAdmin value form the datavase
     const [isAdmin] = useAdmin();
+    // const isAdmin = true;
 
 
     return (

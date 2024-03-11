@@ -1,10 +1,10 @@
 import { IoIosSend } from "react-icons/io";
 const Form = () => {
     return (
-        <div className="p-8 h-[600px] bg-slate-500 w-[1100px] ml-6">
+        <div className="p-8 h-[600px] bg-slate-500 w-[1100px] ml-24">
             <div className="flex justify-center gap-4">
                 <div>
-                    <label className="form-control w-96 ">
+                    <label className="form-control w-96">
                         <div className="label">
                             <span className="label-text text-black font-bold">Name*</span>
                         </div>
