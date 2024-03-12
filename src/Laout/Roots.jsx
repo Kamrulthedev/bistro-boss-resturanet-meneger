@@ -16,6 +16,7 @@ import ManegeItems from "./Pages/Deshbord/ManegeItems/ManegeItems";
 import UpdateItem from "./Pages/Deshbord/UpdateItem/UpdateItem";
 import ManegeBooking from "./Pages/Deshbord/MenegeBooking/ManegeBooking";
 import AdminRaouts from "../Raouts/AdminRaouts";
+import ContactUs from "./Pages/Contact/ContacUs/ContactUs";
 
 
 
@@ -44,7 +45,12 @@ const router = createBrowserRouter([
             {
                 path: '/SignUp',
                 element: <SignUp></SignUp>
+            },
+            {
+                path:'/ContactUs',
+                element:<ContactUs></ContactUs>
             }
+
         ]
     },
     {
@@ -83,7 +89,7 @@ const router = createBrowserRouter([
                 element: <AdminRaouts><UpdateItem></UpdateItem></AdminRaouts>
             }
         ]
-    },
+    }
     
 ])
 

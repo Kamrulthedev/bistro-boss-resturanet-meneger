@@ -21,6 +21,7 @@ const Login = () => {
   const axiosPublic = useAxiosPublic();
 
   const from = locations.state?.from?.pathname || "/";
+  console.log(locations)
   console.log('state in the location Login', locations.state)
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const Login = () => {
 
     signInUser(email, password)
       .then((result) => {
-        navigate('/');
+        navigate(form);
         console.log('Login successful:', result.user);
         navigate(from, { replace: true });
         Swal.fire({
@@ -90,7 +91,6 @@ const Login = () => {
   const handlerGoogleLogin = () => {
     signInGoogle()
     .then((result) => {
-      navigate('/');
       console.log(result.user);
       const userInFo = {
         email: result.user?.email,
@@ -99,7 +99,7 @@ const Login = () => {
       axiosPublic.post('/users',userInFo)
       .then(res =>{
         console.log(res.data);
-        navigate('/');
+           
       })
     })
       .catch((error) => {
