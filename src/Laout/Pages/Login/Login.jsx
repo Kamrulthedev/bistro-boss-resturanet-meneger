@@ -99,7 +99,11 @@ const Login = () => {
       axiosPublic.post('/users',userInFo)
       .then(res =>{
         console.log(res.data);
+<<<<<<< HEAD
            
+=======
+        navigate(from);
+>>>>>>> c0dab25a0a666ef13d71983f84ba9311f318ab25
       })
     })
       .catch((error) => {
