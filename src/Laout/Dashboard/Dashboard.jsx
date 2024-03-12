@@ -74,7 +74,7 @@ const Deshbord = () => {
 
                     <li> <NavLink to='/order' className='hover:text-blue-800 text-black' > <TiShoppingBag className="text-xl ml-2 w-6 h-6 hover:text-lime-500 text-black" />SHOP</NavLink></li>
 
-                    <li> <NavLink to='/Contact' className='hover:text-blue-800 text-black'> <MdOutlineEmail className="text-xl ml-2 w-6 h-6 hover:text-lime-500 text-black" />CONTECT</NavLink></li>
+                    <li> <NavLink to='/ContactUs' className='hover:text-blue-800 text-black'> <MdOutlineEmail className="text-xl ml-2 w-6 h-6 hover:text-lime-500 text-black" />CONTECT</NavLink></li>
                 </ul>
             </div>
             <div className="flex-1">

@@ -1,27 +1,40 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import logo from './../../../../../assets/icon/images.png';
-import { useContext } from "react";
 import { AuthContext } from "../../../../../providers/AuthProviders";
 import useCarts from "../../../../../Hooks/useCarts";
+import { useContext } from "react";
+
 
 const Navber = () => {
     const { user, LogOut } = useContext(AuthContext);
+
     const [cart] = useCarts();
     const location = useLocation()
     const navigate = useNavigate()
 
+
+
+
+
     const handleLogOut = () => {
-        LogOut()
-            .then(() => { })
-        navigate(location?.state ? location.state : '/')
-            .catch(error => console.log(error))
+        if (user && user.email) {
+            LogOut()
+                .then(() => navigate(location?.state ? location.state : '/'))
+                .catch(error => console.log(error));
+        } else {
+            navigate(location?.state ? location.state : '/');
+        }
     }
+    
 
     const AddLinks = <>
         <Link className="font-bold text-xs hover:text-lime-500 " to='/' >HOME</Link>
-        <Link className="font-bold text-xs hover:text-lime-500" to='/Contact'>CONTACT US</Link>
+
+        <Link className="font-bold text-xs hover:text-lime-500" to='/ContactUs'>CONTACT US</Link>
+       
         <Link className="font-bold text-xs hover:text-lime-500" to='/Dashboard/AdminHome' >DASHBOARD</Link>
+        
         <Link className="font-bold text-xs hover:text-lime-500 " to='/menu' >OUR MENU</Link>
         <Link className="font-bold text-xs hover:text-lime-500  flex" to='/order ' >OUR FOOD</Link>
         <Link className="flex " to='/Dashboard/Cart'>

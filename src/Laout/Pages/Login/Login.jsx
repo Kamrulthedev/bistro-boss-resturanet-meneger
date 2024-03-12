@@ -35,6 +35,7 @@ const Login = () => {
 
     signInUser(email, password)
       .then((result) => {
+        navigate('/');
         console.log('Login successful:', result.user);
         navigate(from, { replace: true });
         Swal.fire({
@@ -89,6 +90,7 @@ const Login = () => {
   const handlerGoogleLogin = () => {
     signInGoogle()
     .then((result) => {
+      navigate('/');
       console.log(result.user);
       const userInFo = {
         email: result.user?.email,
