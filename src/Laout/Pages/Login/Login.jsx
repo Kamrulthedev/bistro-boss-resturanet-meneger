@@ -90,7 +90,6 @@ const Login = () => {
   const handlerGoogleLogin = () => {
     signInGoogle()
     .then((result) => {
-      navigate('/');
       console.log(result.user);
       const userInFo = {
         email: result.user?.email,
@@ -99,7 +98,7 @@ const Login = () => {
       axiosPublic.post('/users',userInFo)
       .then(res =>{
         console.log(res.data);
-        navigate('/');
+        navigate(from);
       })
     })
       .catch((error) => {
