@@ -1,14 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithRedirect, signOut, updateProfile } from "firebase/auth";
-import auth from "../firebase/firebase.config";
+import auth from './../firebase/firebase.config';
 import useAxiosPublic from "../Hooks/useAxiosPublic";
-
 
 
 export const AuthContext = createContext(null);
 const AuthProviders = ({ children }) => {
-
 
   const axsiocPablic = useAxiosPublic();
   const provider = new GoogleAuthProvider();
@@ -19,7 +17,8 @@ const AuthProviders = ({ children }) => {
   const createUaer = (email, password) => {
     serLoading(true)
     return createUserWithEmailAndPassword(auth, email, password)
-  }
+  };
+
   const signInUser = (email, password) => {
     serLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -28,23 +27,23 @@ const AuthProviders = ({ children }) => {
   const signInGoogle = () => {
     serLoading(true)
     return signInWithRedirect(auth, provider);
-
-  }
+  };
 
   const UpdateUser = (name, photo) => {
     return updateProfile(auth.currentUser, {
       displayName: name, photoURL: photo
     })
-  }
+  };
 
   const LogOut = () => {
     serLoading(true)
     return signOut(auth)
-  }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
+      
       if (createUaer) {
         //get token and stord cliend
         const userInfo = { email: currentUser.email };
@@ -66,6 +65,8 @@ const AuthProviders = ({ children }) => {
     }
   }, [axsiocPablic]);
 
+
+
   const authInfo = {
     user,
     loading,
@@ -75,6 +76,7 @@ const AuthProviders = ({ children }) => {
     signInGoogle,
     UpdateUser
   };
+
   return (
     <AuthContext.Provider value={authInfo}>
       {children}

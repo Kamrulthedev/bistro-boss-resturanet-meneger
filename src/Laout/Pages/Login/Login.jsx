@@ -22,11 +22,11 @@ const Login = () => {
 
   const from = locations.state?.from?.pathname || "/";
   console.log(locations)
-  console.log('state in the location Login', locations.state)
+  console.log('state in the location Login', locations.state);
 
   useEffect(() => {
     loadCaptchaEnginge(6);
-  }, [])
+  }, []);
 
   const handlerLoginSubmit = e => {
     e.preventDefault();
@@ -42,7 +42,7 @@ const Login = () => {
         Swal.fire({
           title: "Login Successfuly",
           showClass: {
-            popup:`
+            popup: `
               animate__animated
               animate__fadeInUp
               animate__faster`
@@ -61,13 +61,13 @@ const Login = () => {
         Swal.fire({
           title: "Is Not Valid User",
           showClass: {
-            popup:`
+            popup: `
               animate__animated
               animate__fadeInUp
               animate__faster`
           },
           hideClass: {
-            popup:`
+            popup: `
               animate__animated
               animate__fadeOutDown
               animate__faster`
@@ -90,22 +90,18 @@ const Login = () => {
 
   const handlerGoogleLogin = () => {
     signInGoogle()
-    .then((result) => {
-      console.log(result.user);
-      const userInFo = {
-        email: result.user?.email,
-        name: result.user.displayName
-      }
-      axiosPublic.post('/users',userInFo)
-      .then(res =>{
-        console.log(res.data);
-<<<<<<< HEAD
-           
-=======
-        navigate(from);
->>>>>>> c0dab25a0a666ef13d71983f84ba9311f318ab25
+      .then((result) => {
+        console.log(result.user);
+        const userInFo = {
+          email: result.user?.email,
+          name: result.user.displayName
+        }
+        axiosPublic.post('/users', userInFo)
+          .then(res => {
+            console.log(res.data);
+            navigate(from);
+          })
       })
-    })
       .catch((error) => {
         console.error('Error signing in with Google:', error.code, error.message);
       });
@@ -147,7 +143,7 @@ const Login = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <LoadCanvasTemplate/>
+                  <LoadCanvasTemplate />
                 </label>
                 <input onBlur={handlerLoginCaptcha} type="text" placeholder="type hear captcha" className="input input-bordered" name='captcha' required />
               </div>

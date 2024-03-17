@@ -3,94 +3,36 @@ import img1 from './../../../assets/others/authentication1.png';
 import { CiFacebook } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
-import { useContext } from 'react';
-import { AuthContext } from '../../../providers/AuthProviders';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
+import { useForm } from 'react-hook-form';
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProviders';
 
 
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
-  const { createUaer, UpdateUser, signInGoogle } = useContext(AuthContext);
+  const { createUaer, UpdateUser, signInGoogle } = useContext(AuthContext)
   const navigate = useNavigate();
 
+  const { register, handleSubmit, watch, formState: { errors }, } = useForm();
 
 
-  const handlerSignUp = e => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.Name.value;
-    const photo = form.PhotoUrl.value;
-    const email = form.email.value;
-    const password = form.password.value;
-
-
-    const userInfo = {
-      name: name,
-      email: email
-    }
+  const onSubmit = async (data) => {
+    const { email, password } = data;
+    
     createUaer(email, password)
       .then((result) => {
         console.log(result.user)
-        UpdateUser(name, photo)
-          .then(() => {
-            //Cerate user entry in the database
-
-            axiosPublic.post('/users', userInfo)
-              .then(res => {
-                if (res.data.insertedId) {
-                  Swal.fire({
-                    title: "Registation Successfuly",
-                    showClass: {
-                      popup: `
-                      animate__animated
-                      animate__fadeInUp
-                      animate__faster
-                    `
-                    },
-                    hideClass: {
-                      popup: `
-                      animate__animated
-                      animate__fadeOutDown
-                      animate__faster
-                    `
-                    }
-                  });
-                  console.log('user added database')
-                }
-              })
-
-            console.log('user profile info updated')
-          })
-          .catch(error => {
-            console.log(error)
-          })
-        navigate('/');
-
+        Swal.fire("Success", "User signed up successfully!", "success");
+        navigate('/'); // Redirect to a different page after successful signup
       })
       .catch((error) => {
-        console.log(error)
-        Swal.fire({
-          title: "Not valid Information",
-          showClass: {
-            popup: `
-              animate__animated
-              animate__fadeInUp
-              animate__faster
-            `
-          },
-          hideClass: {
-            popup: `
-              animate__animated
-              animate__fadeOutDown
-              animate__faster
-            `
-          }
-        });
-      })
+        console.error('Error creating user:', error);
+        Swal.fire("Error", "Failed to create user. Please try again.", "error");
+      });
   };
-
   
 
 
@@ -98,15 +40,16 @@ const SignUp = () => {
     signInGoogle()
       .then((result) => {
         console.log(result.user);
+        navigate('/');
         const userInFo = {
           email: result.user?.email,
           name: result.user.displayName
         }
-        axiosPublic.post('/users',userInFo)
-        .then(res =>{
-          console.log(res.data);
-          navigate('/');
-        })
+        axiosPublic.post('/users', userInFo)
+          .then(res => {
+            console.log(res.data);
+            navigate('/');
+          })
       })
       .catch((error) => {
         console.error('Error signing in with Google:', error.code, error.message);
@@ -128,36 +71,56 @@ const SignUp = () => {
 
           <div className="card  p-8  bg-gray-200">
             <div className='text-center '>
-              <h1 className='text-2xl font-bold -mb-10'>Sign Up</h1>
+              <h1 className='text-2xl font-bold -mb-10 text-black uppercase'>Sign Up</h1>
             </div>
-            <form onSubmit={handlerSignUp} className="card-body">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Name</span>
+                  <span className="label-text text-black">Name</span>
                 </label>
-                <input type="Name" placeholder="Type hear" className="input w-80 input-bordered" name='Name' required />
+                <input type="Name" {...register("Name", { required: true })} placeholder="Type hear" className="input w-80 input-bordered" />
+                {errors.Name && <span className='text-red-600'>This field is required</span>}
+
               </div>
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Photo</span>
+                  <span className="label-text text-black">Photo</span>
                 </label>
-                <input type="PhotoUrl" placeholder="Type hear PhotoUrl" className="input w-80 input-bordered" name='PhotoUrl' required />
+                <input type="PhotoUrl" {...register("PhotoUrl", { required: true })} placeholder="Type hear PhotoUrl" className="input w-80 input-bordered" />
+                {errors.PhotoUrl && <span className='text-red-600'>This field is required</span>}
+
               </div>
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-black">Email</span>
                 </label>
-                <input type="email" placeholder="Type hear" className="input w-80 input-bordered" name='email' required />
+                <input type="email" {...register("email", { required: true })} placeholder="Type hear" className="input w-80 input-bordered" />
+                {errors.email && <span className='text-red-600'> This field is required</span>}
               </div>
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-black">Password</span>
                 </label>
-                <input type="password" placeholder="Enter Your Password" className="input input-bordered" name='password' required />
+                <input type="password" {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  // maxLength: 20,
+                  pattern: /(?=.*[!@#$&*])/,
+                })} placeholder="Enter Your Password" className="input input-bordered" />
+
+                {errors.password && <span className='text-red-600'> This field is required </span>}
+
+                {errors.password?.type === "minLength" && (<p className='text-red-600'>Password Must be 6 charactres</p>
+                )}
+                {errors.password?.type === "maxLength" && (<p className='text-red-600'>Password Must be less then 20 charactres</p>
+                )}
+                {errors.password?.type === "pattern" && (<p className='text-red-600 '>Password Must be one uppercase letter and one special letter and one digit</p>
+                )}
               </div>
+
 
               <div className="form-control mt-6">
                 <input type="submit" value='Sign Up' className="btn btn-ghost uppercase bg-amber-600" name="" id="" />

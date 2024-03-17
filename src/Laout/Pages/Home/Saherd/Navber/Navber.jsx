@@ -5,17 +5,12 @@ import { AuthContext } from "../../../../../providers/AuthProviders";
 import useCarts from "../../../../../Hooks/useCarts";
 import { useContext } from "react";
 
-
 const Navber = () => {
     const { user, LogOut } = useContext(AuthContext);
 
     const [cart] = useCarts();
-    const location = useLocation()
-    const navigate = useNavigate()
-
-
-
-
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleLogOut = () => {
         if (user && user.email) {
@@ -24,8 +19,7 @@ const Navber = () => {
                 .catch(error => console.log(error));
         } else {
             navigate(location?.state ? location.state : '/');
-        }
-    }
+        }};
     
 
     const AddLinks = <>
@@ -47,8 +41,11 @@ const Navber = () => {
             : <Link className="font-bold text-xs hover:text-lime-500 " to={'/Login'}>LOGINH</Link>
         }
     </>
+
+
     const hanlerProfileClick = () => {
 
+        
     };
 
     return (
