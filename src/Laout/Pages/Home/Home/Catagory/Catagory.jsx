@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
+import img6 from './../../../../../assets/home/Pizz.jpg';
 
 import img10 from './../../../../../assets/home/slide1.jpg';
 import img11 from './../../../../../assets/home/slide2.jpg';
@@ -47,7 +48,7 @@ const Catagory = () => {
             </Swiper>
 
            <div className='h-[572px] items-center '>
-           <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/3sPntbh/chef-service.jpg)' }}>
+           <div className="hero min-h-screen" style={{ backgroundImage: `url(${img6})` }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className=' text-center mb-12 h-[200px] bg-slate-100 p-52'>
                     <div>

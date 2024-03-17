@@ -1,8 +1,8 @@
-import img1 from './../../../../assets/home/featured.jpg';
+import img1 from './../../../../assets/home/Pizz.jpg';
 
 const Fesard = () => {
     return (
-        <div className="hero min-h-screen mb-20 bg-fixed" style={{backgroundImage: 'url(https://i.ibb.co/PFyQrDp/banner.jpg)'}}>
+        <div className="hero min-h-screen mb-20 bg-fixed" style={{backgroundImage: `url(${img1})`}}>
         <div className="hero-overlay bg-opacity-60">
         <div className='flex flex-col items-center space-y-6 mb-8 mt-16 justify-center'>
 
