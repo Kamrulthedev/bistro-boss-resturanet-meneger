@@ -5,18 +5,16 @@ import { FaGithub } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
-import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProviders';
 
 
 const SignUp = () => {
-  const axiosPublic = useAxiosPublic();
-  const { createUaer, UpdateUser, signInGoogle } = useContext(AuthContext);
+  const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+  const { createUaer, UpdateUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const { register, handleSubmit, watch, formState: { errors }, } = useForm();
 
   const onSubmit = async (data) => {
     const { email, password } = data;
@@ -24,6 +22,15 @@ const SignUp = () => {
     createUaer(email, password)
       .then((result) => {
         console.log(result.user)
+
+        UpdateUser(data.name, data.PhotoUrl)
+        .then(()=>{
+          console.log('User Profile info update')
+          reset();
+        })
+        .catch((error)=>{
+          console.log(error)
+        })
         Swal.fire("Success", "User signed up successfully!", "success");
         navigate('/'); // Redirect to a different page after successful signup
       })
@@ -33,28 +40,6 @@ const SignUp = () => {
       });
   };
   
-
-  const handlerGoogleLogin = () => {
-    signInGoogle()
-      .then((result) => {
-        console.log(result.user);
-        Swal.fire("Success", "User signed up successfully!", "success");
-        navigate('/');
-        const userInFo = {
-          email: result.user?.email,
-          name: result.user.displayName
-        }
-        axiosPublic.post('/users', userInFo)
-          .then(res => {
-            console.log(res.data);
-            navigate('/');
-          })
-      })
-      .catch((error) => {
-        console.error('Error signing in with Google:', error.code, error.message);
-      });
-  };
-
 
 
   return (
@@ -127,7 +112,7 @@ const SignUp = () => {
               <h5>Or sign up with</h5>
               <div className='flex justify-center text-3xl gap-8 '>
                 <CiFacebook className='text-slate-900' />
-                <button onClick={handlerGoogleLogin}>
+                <button >
                   <FaGoogle className='text-slate-900'></FaGoogle>
                 </button>
                 <FaGithub className='text-slate-900' />

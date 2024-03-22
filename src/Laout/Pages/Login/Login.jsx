@@ -9,16 +9,14 @@ import { FaGoogle } from "react-icons/fa";
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 
 
 const Login = () => {
   const [LoginError, setLoginError] = useState('');
   const [disabled, setDisabled] = useState(true);
-  const { signInUser, signInGoogle } = useContext(AuthContext);
+  const { signInUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const locations = useLocation();
-  const axiosPublic = useAxiosPublic();
 
   const from = locations.state?.from?.pathname || "/";
   console.log('state in the location Login', locations.state);
@@ -87,24 +85,6 @@ const Login = () => {
   };
 
 
-  const handlerGoogleLogin = () => {
-    signInGoogle()
-      .then((result) => {
-
-        const userInFo = {
-          email: result.user?.email,
-          name: result.user.displayName
-        }
-        axiosPublic.post('/users', userInFo)
-          .then(res => {
-            console.log(res.data);
-            navigate(from);
-          })
-      })
-      .catch((error) => {
-        console.error('Error signing in with Google:', error.code, error.message);
-      });
-  };
 
   return (
     <>
@@ -157,7 +137,7 @@ const Login = () => {
               <h5>Or sign in with</h5>
               <div className='flex justify-center text-3xl gap-8 '>
                 <CiFacebook className="text-slate-900"></CiFacebook>
-                <button onClick={handlerGoogleLogin}>
+                <button>
                   <FaGoogle className='text-slate-900'></FaGoogle>
                 </button>
                 <FaGithub className='text-slate-900'></FaGithub>

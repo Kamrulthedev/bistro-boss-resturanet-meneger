@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { useEffect, useState } from 'react';
 import { Rating } from '@smastrom/react-rating';
+import Title from '../Saherd/Title/Title';
 
 
 const Testimonials = () => {
@@ -23,12 +24,8 @@ const Testimonials = () => {
 
     return (
         <div>
-            <div className='flex flex-col items-center space-y-6 mb-8 mt-16 justify-center'>
-                <h1 className='text-[#D99904] text-lg '>---What Our Clients Say---</h1>
-                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
-                <h3 className='text-4xl'>TESTIMONIALS</h3>
-                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
-            </div>
+            <Title subcontitle={'---What Our Clients Say---'} subconLocation={'TESTIMONIALS'}></Title>
+            
 
             <div>
                 <Swiper navigation={true} modules={[Navigation]} className="mySwiper mb-16">

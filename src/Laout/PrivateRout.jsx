@@ -13,8 +13,8 @@ const PrivateRout = ({children}) => {
         return children;
     }
     return <Navigate to={'/Login'} state={{from: location}} replace></Navigate>
-   
 };
+
 PrivateRout.propTypes = {
     children: PropTypes.node.isRequired,
 };

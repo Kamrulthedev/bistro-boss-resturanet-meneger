@@ -1,6 +1,7 @@
 
 import MenuItem from "../Saherd/Menuitem/MenuItem";
 import useMenu from "../../../../Hooks/useMenu";
+import Title from "../Saherd/Title/Title";
 
 const PopulerMeno = () => {
     const [menu] = useMenu();
@@ -8,13 +9,9 @@ const PopulerMeno = () => {
 
     
     return (
-        <div className="mt-36 ">
-            <div className='flex flex-col items-center space-y-6 mb-8 mt-16 justify-center'>
-                <h1 className='text-[#D99904] text-lg '>---Check it out---</h1>
-                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
-                <h3 className='text-4xl'>FROM OUR MENU</h3>
-                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
-            </div>
+        <div className="mt-56">
+            <Title subcontitle={'---Check it out---'} subconLocation={'FROM OUR MENU'}></Title>
+            
             <div className=" grid grid-cols-2 gap-10">
                 {
                     populer.map(item => <MenuItem key={item._id}

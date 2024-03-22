@@ -10,15 +10,13 @@ import img12 from './../../../../../assets/home/slide3.jpg';
 import img13 from './../../../../../assets/home/slide4.jpg';
 import img14 from './../../../../../assets/home/slide5.jpg';
 import img15 from './../../../../../assets/home/slide5.jpg';
+import Title from '../../Saherd/Title/Title';
 
 
 const Catagory = () => {
     return (
         <>
-            <div className='flex flex-col items-center space-y-6 mb-8 mt-16 justify-center'>
-                <h1 className='text-[#D99904] text-lg '>---From 11:00am to 10:00pm---</h1>
-                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>                <h3 className='text-4xl'>ORDER ONLINE</h3>
-                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>            </div>
+        <Title subcontitle={'---From 11:00am to 10:00pm---'} subconLocation={'ORDER ONLINE'}></Title>
             <Swiper
                 slidesPerView={4}
                 spaceBetween={10}

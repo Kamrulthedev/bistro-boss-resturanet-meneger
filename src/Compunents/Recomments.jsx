@@ -1,19 +1,16 @@
-
+import Title from "../Laout/Pages/Home/Saherd/Title/Title";
+import slide from "./../assets/home/slide1.jpg";
 
 const Recomments = () => {
     return (
         <div className="mb-20">
-            <div className='flex flex-col items-center space-y-6 mb-8 mt-16 justify-center'>
-                <h1 className='text-[#D99904] text-lg '>---Should Try---</h1>
-                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
-                <h3 className='text-4xl'>CHEF RECOMMENDS</h3>
-                <p className='border w-[424px] h-[4px] text-center flex-shrink-0'></p>
-            </div>
+            <Title subcontitle={'---Should Try---'} subconLocation={'CHEF RECOMMENDS'}></Title>
+            
             <div className="grid grid-cols-3">
                 {/* card 1 */}
-                <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card h-[500px]  w-96 bg-base-100 shadow-xl">
                     <figure className="">
-                        <img src="https://i.ibb.co/TrhpXnr/image.png" alt="Shoes" className="rounded-xl" />
+                    <img src={slide} alt="Shoes" className="rounded-xl w-full" />
                     </figure>
                     <div className="card-body items-center text-center bg-slate-200">
                         <h2 className="card-title">Caeser Salad</h2>
@@ -24,9 +21,9 @@ const Recomments = () => {
                     </div>
                 </div>
                 {/* card 2 */}
-                <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card h-[500px]  w-96 bg-base-100 shadow-xl">
                     <figure className="">
-                        <img src="https://i.ibb.co/TrhpXnr/image.png" alt="Shoes" className="rounded-xl" />
+                    <img src={slide} alt="Shoes" className="rounded-xl w-full" />
                     </figure>
                     <div className="card-body items-center text-center bg-slate-200">
                         <h2 className="card-title">Caeser Salad</h2>
@@ -37,9 +34,9 @@ const Recomments = () => {
                     </div>
                 </div>
                 {/* card 3 */}
-                <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card h-[500px]  w-96 bg-base-100 shadow-xl">
                     <figure className="">
-                        <img src="https://i.ibb.co/TrhpXnr/image.png" alt="Shoes" className="rounded-xl" />
+                    <img src={slide} alt="Shoes" className="rounded-xl w-full" />
                     </figure>
                     <div className="card-body items-center text-center bg-slate-200">
                         <h2 className="card-title">Caeser Salad</h2>
