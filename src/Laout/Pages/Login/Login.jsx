@@ -21,7 +21,6 @@ const Login = () => {
   const axiosPublic = useAxiosPublic();
 
   const from = locations.state?.from?.pathname || "/";
-  console.log(locations)
   console.log('state in the location Login', locations.state);
 
   useEffect(() => {
@@ -91,7 +90,7 @@ const Login = () => {
   const handlerGoogleLogin = () => {
     signInGoogle()
       .then((result) => {
-        console.log(result.user);
+
         const userInFo = {
           email: result.user?.email,
           name: result.user.displayName

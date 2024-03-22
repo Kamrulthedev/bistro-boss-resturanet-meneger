@@ -13,11 +13,10 @@ import { AuthContext } from '../../../providers/AuthProviders';
 
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
-  const { createUaer, UpdateUser, signInGoogle } = useContext(AuthContext)
+  const { createUaer, UpdateUser, signInGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const { register, handleSubmit, watch, formState: { errors }, } = useForm();
-
 
   const onSubmit = async (data) => {
     const { email, password } = data;
@@ -35,11 +34,11 @@ const SignUp = () => {
   };
   
 
-
   const handlerGoogleLogin = () => {
     signInGoogle()
       .then((result) => {
         console.log(result.user);
+        Swal.fire("Success", "User signed up successfully!", "success");
         navigate('/');
         const userInFo = {
           email: result.user?.email,
@@ -80,7 +79,6 @@ const SignUp = () => {
                 </label>
                 <input type="Name" {...register("Name", { required: true })} placeholder="Type hear" className="input w-80 input-bordered" />
                 {errors.Name && <span className='text-red-600'>This field is required</span>}
-
               </div>
 
               <div className="form-control">
@@ -89,7 +87,6 @@ const SignUp = () => {
                 </label>
                 <input type="PhotoUrl" {...register("PhotoUrl", { required: true })} placeholder="Type hear PhotoUrl" className="input w-80 input-bordered" />
                 {errors.PhotoUrl && <span className='text-red-600'>This field is required</span>}
-
               </div>
 
               <div className="form-control">
@@ -112,7 +109,6 @@ const SignUp = () => {
                 })} placeholder="Enter Your Password" className="input input-bordered" />
 
                 {errors.password && <span className='text-red-600'> This field is required </span>}
-
                 {errors.password?.type === "minLength" && (<p className='text-red-600'>Password Must be 6 charactres</p>
                 )}
                 {errors.password?.type === "maxLength" && (<p className='text-red-600'>Password Must be less then 20 charactres</p>

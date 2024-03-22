@@ -23,7 +23,7 @@ const Navber = () => {
     
 
     const AddLinks = <>
-        <Link className="font-bold text-xs hover:text-lime-500 " to='/' >HOME</Link>
+        <Link className="font-bold text-xs hover:text-lime-500 Lw " to='/' >HOME</Link>
 
         <Link className="font-bold text-xs hover:text-lime-500" to='/ContactUs'>CONTACT US</Link>
        
