@@ -1,21 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "./useAxcios";
-import { useContext } from "react";
-import { AuthContext } from "../providers/AuthProviders";
-
+import useAuth from "./useAuth";
 
 const useCarts = () => {
    //ten stak quary
    const axiosSeceur = useAxios();
-   const { user } = useContext(AuthContext);
-    const { refetch, data: cart = [] } = useQuery({
-      queryKey: ['cart', user?.email],
+   const { user } = useAuth();
+
+   const { refetch, data: cart = [] } = useQuery({
+      queryKey: ['card', user?.email],
       queryFn: async () => {
-         const res = await axiosSeceur.get(`/cards? email = ${user.email}`)
-         return res.data;
+         const res = await axiosSeceur.get(`/cards?email=${user?.email}`);
+         return res.data; // Return the fetched data
       }
-   })
-   return [cart, refetch]
+   });
+
+   return [cart, refetch];
 };
 
 export default useCarts;
