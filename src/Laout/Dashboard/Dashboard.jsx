@@ -10,7 +10,6 @@ import useAdmin from "../../Hooks/useAdmin";
 
 const Deshbord = () => {
 
-    //TODO: get isAdmin value form the datavase
     const [isAdmin] = useAdmin();
     // const isAdmin = true;
 
@@ -22,6 +21,7 @@ const Deshbord = () => {
                     <h1 className="text-3xl font-bold text-black">BISTRO BOSS</h1>
                     <p className="text-2xl font-semibold text-black">RESTAURANT</p>
                 </div>
+                {/* Deshbord side ber */}
                 <ul className="menu gap-4">
                     {
                         isAdmin ? <>
@@ -77,6 +77,7 @@ const Deshbord = () => {
                     <li> <NavLink to='/ContactUs' className='hover:text-blue-800 text-black'> <MdOutlineEmail className="text-xl ml-2 w-6 h-6 hover:text-lime-500 text-black" />CONTECT</NavLink></li>
                 </ul>
             </div>
+            {/*/ Desbord Contact   */}
             <div className="flex-1">
                 <Outlet></Outlet>
             </div>
