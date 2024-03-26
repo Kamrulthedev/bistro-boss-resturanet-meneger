@@ -5,10 +5,10 @@ import { AuthContext } from '../../../providers/AuthProviders';
 import { Link, useLocation } from 'react-router-dom';
 import { CiFacebook } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa";
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import SocailLogin from '../../../Compunents/SocailLogin/SocailLogin';
 
 
 const Login = () => {
@@ -134,11 +134,10 @@ const Login = () => {
               <h1>{LoginError}</h1>
               <h4>  New here? <Link className='text-orange-700  font-bold' to='/SignUp'>Create a New Account</Link></h4>
               <h5>Or sign in with</h5>
+           
               <div className='flex justify-center text-3xl gap-8 '>
                 <CiFacebook className="text-slate-900"></CiFacebook>
-                <button>
-                  <FaGoogle className='text-slate-900'></FaGoogle>
-                </button>
+                <SocailLogin></SocailLogin>
                 <FaGithub className='text-slate-900'></FaGithub>
               </div>
             </div>

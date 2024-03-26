@@ -2,13 +2,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import img1 from './../../../assets/others/authentication1.png';
 import { CiFacebook } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa";
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProviders';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
+import SocailLogin from '../../../Compunents/SocailLogin/SocailLogin';
 
 
 const SignUp = () => {
@@ -130,9 +130,7 @@ const SignUp = () => {
               <h5>Or sign up with</h5>
               <div className='flex justify-center text-3xl gap-8 '>
                 <CiFacebook className='text-slate-900' />
-                <button >
-                  <FaGoogle className='text-slate-900'></FaGoogle>
-                </button>
+               <SocailLogin></SocailLogin>
                 <FaGithub className='text-slate-900' />
               </div>
             </div>
