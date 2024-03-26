@@ -11,6 +11,8 @@ const Navber = () => {
     const [cart] = useCarts();
     const location = useLocation();
     const navigate = useNavigate();
+ 
+
 
     const handleLogOut = () => {
         if (user && user.email) {
@@ -19,16 +21,16 @@ const Navber = () => {
                 .catch(error => console.log(error));
         } else {
             navigate(location?.state ? location.state : '/');
-        }};
-    
+        }
+    };
+
 
     const AddLinks = <>
         <Link className="font-bold text-xs hover:text-lime-500 Lw " to='/' >HOME</Link>
 
         <Link className="font-bold text-xs hover:text-lime-500" to='/ContactUs'>CONTACT US</Link>
-       
-        <Link className="font-bold text-xs hover:text-lime-500" to='/Dashboard/AdminHome' >DASHBOARD</Link>
-        
+      
+        <Link className="font-bold text-xs hover:text-lime-500" to='/Dashboard/AdminHome' >DASHBOARD</Link> 
         <Link className="font-bold text-xs hover:text-lime-500 " to='/menu' >OUR MENU</Link>
         <Link className="font-bold text-xs hover:text-lime-500  flex" to='/order ' >OUR FOOD</Link>
         <Link className="flex " to='/Dashboard/Cart'>
@@ -45,7 +47,7 @@ const Navber = () => {
 
     const hanlerProfileClick = () => {
 
-        
+
     };
 
     return (
