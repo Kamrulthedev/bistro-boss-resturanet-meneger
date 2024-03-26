@@ -44,27 +44,31 @@ const AuthProviders = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
       
-      if (createUaer) {
-        //get token and stord cliend
-        const userInfo = { email: currentUser.email };
-        axsiocPablic.post('jwt', userInfo)
-          .then(res => {
-            if (res.data.token) {
-              localStorage.setItem('access-token', res.data.token)
-            }
-          })
-      }
-      else {
-        //TODO: remove token and cliend stord and remove and other stores
+      if (currentUser) {
+        // User is authenticated
+        if (currentUser.email) {
+          // User is created (not necessary to check for createUser function)
+          const userInfo = { email: currentUser.email };
+          axsiocPablic.post('/jwt', userInfo)
+            .then(res => {
+              if (res.data.token) {
+                localStorage.setItem('access-token', res.data.token);
+              }
+            })
+            .catch(error => {
+              console.error('Error storing token:', error);
+            });
+        }
+      } else {
+        // User is not authenticated (logged out)
         localStorage.removeItem('access-token');
       }
       serLoading(false);
     });
-    return () => {
-      return unsubscribe()
-    }
+  
+    return unsubscribe;
   }, [axsiocPablic]);
-
+  
 
 
   const authInfo = {

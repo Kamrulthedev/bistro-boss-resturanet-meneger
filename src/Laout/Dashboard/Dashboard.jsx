@@ -11,8 +11,6 @@ import useAdmin from "../../Hooks/useAdmin";
 const Deshbord = () => {
 
     const [isAdmin] = useAdmin();
-    // const isAdmin = false;
-
 
     return (
         <div className="flex">

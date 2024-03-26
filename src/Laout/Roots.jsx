@@ -63,6 +63,10 @@ const router = createBrowserRouter([
                 path: "Cart",
                 element: <Cart></Cart>
             },
+            {
+                path: 'Booking',
+                element: <ManegeBooking></ManegeBooking>
+            },
             //admin routs
             {
                 path: "AllUsers",
@@ -80,10 +84,7 @@ const router = createBrowserRouter([
                 path: 'manegeItems',
                 element: <AdminRaouts><ManegeItems></ManegeItems></AdminRaouts>
             },
-            {
-                path: 'Booking',
-                element: <AdminRaouts><ManegeBooking></ManegeBooking></AdminRaouts>
-            },
+          
             {
                 path: 'UpdateItem',
                 element: <AdminRaouts><UpdateItem></UpdateItem></AdminRaouts>
