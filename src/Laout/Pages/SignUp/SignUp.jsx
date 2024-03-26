@@ -8,38 +8,56 @@ import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProviders';
+import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 
 
 const SignUp = () => {
   const { register, handleSubmit, reset, formState: { errors }, } = useForm();
   const { createUaer, UpdateUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
 
   const onSubmit = async (data) => {
     const { email, password } = data;
-    
+
     createUaer(email, password)
       .then((result) => {
         console.log(result.user)
 
         UpdateUser(data.name, data.PhotoUrl)
-        .then(()=>{
-          console.log('User Profile info update')
-          reset();
-        })
-        .catch((error)=>{
-          console.log(error)
-        })
-        Swal.fire("Success", "User signed up successfully!", "success");
-        navigate('/'); // Redirect to a different page after successful signup
+          .then(() => {
+            //create user entry in the database
+            const userInfo = {
+              name: data.name,
+              email: data.email
+            }
+
+            axiosPublic.post('/users', userInfo)
+              .then(res => {
+                if (res.data.insertedId) {
+                  console.log('user added to the database')
+                  reset();
+                  Swal.fire("Success", "User signed up successfully!", "success");
+                  navigate('/'); // Redirect to a different page after successful signup
+                }
+              })
+              .catch((error) => {
+                console.error('Error creating user:', error);
+                Swal.fire("Error", "Failed to create user. Please try again.", "error");
+              });
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+
       })
       .catch((error) => {
         console.error('Error creating user:', error);
         Swal.fire("Error", "Failed to create user. Please try again.", "error");
       });
   };
-  
+
 
 
   return (
@@ -62,7 +80,7 @@ const SignUp = () => {
                 <label className="label">
                   <span className="label-text text-black">Name</span>
                 </label>
-                <input type="Name" {...register("Name", { required: true })} placeholder="Type hear" className="input w-80 input-bordered" />
+                <input type="name" {...register("name", { required: true })} placeholder="Type hear" className="input w-80 input-bordered" />
                 {errors.Name && <span className='text-red-600'>This field is required</span>}
               </div>
 

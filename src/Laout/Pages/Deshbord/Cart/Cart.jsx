@@ -33,11 +33,9 @@ const Cart = () => {
                             });
                         }
                     })
-
-
             }
         });
-    };
+    }
 
 
     return (
@@ -96,7 +94,7 @@ const Cart = () => {
                                         <button className="btn btn-ghost btn-xs"> <AiTwotoneDelete onClick={() => hanlderDelete(item._id)} className="text-red-500 text-2xl" /> </button>
                                     </th>
                                 </tr>)
-                            };
+                            }
                         </tbody>
                     </table>
                 </div>
