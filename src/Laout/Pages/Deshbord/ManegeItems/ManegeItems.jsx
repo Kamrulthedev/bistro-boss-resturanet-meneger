@@ -1,16 +1,31 @@
 import { AiTwotoneDelete } from "react-icons/ai";
 import Title from "../../Home/Saherd/Title/Title";
+import useMenu from "../../../../Hooks/useMenu";
+import { FaEdit } from "react-icons/fa";
+
 
 const ManegeItems = () => {
+    const [ menu, loding ] = useMenu();
+
+    
+
+    const hanlderFoodDelete = (item) =>{
+
+    }
+    const hanlderFoodUpdate = (item) =>{
+
+    }
+
+
     return (
         <div>
             <Title subcontitle={'---Hurry Up!---'} subconLocation={'MANAGE ALL ITEMS'}></Title>
 
-           <div className="flex justify-between">
-                <h1 className="text-2xl font-bold p-8 uppercase">Total items: 6</h1>
+            <div className="flex justify-between">
+                <h1 className="text-2xl font-bold p-8 uppercase">Total items: {menu.length}</h1>
             </div>
-              {/* taibal */}
-              <div>
+            {/* taibal */}
+            <div>
                 <div className="overflow-x-auto">
                     <table className="table lg:w-full w-64">
                         {/* head */}
@@ -26,7 +41,7 @@ const ManegeItems = () => {
                         </thead>
                         <tbody>
                             {
-                                ((item, index) => <tr key={item._id}>
+                                menu.map((item, index) => <tr key={item._id}>
                                     <th>
                                         {index + 1}
                                     </th>
@@ -46,9 +61,13 @@ const ManegeItems = () => {
                                     <td>
                                         <span className="badge badge-ghost badge-sm">$ {item.price}</span>
                                     </td>
+                                    
+                                    <td>
+                                    <button onClick={() => hanlderFoodUpdate(item._id)} className="btn btn-ghost btn-xs"> <FaEdit className="text-orange-400 text-2xl" /> </button>
+                                    </td>
 
                                     <th>
-                                        <button className="btn btn-ghost btn-xs"> <AiTwotoneDelete className="text-red-500 text-2xl" /> </button>
+                                        <button onClick={() => hanlderFoodDelete(item._id)} className="btn btn-ghost btn-xs"> <AiTwotoneDelete className="text-red-500 text-2xl" /> </button>
                                     </th>
                                 </tr>)
                             }
