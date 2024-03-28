@@ -1,6 +1,7 @@
 import { FaUtensils } from "react-icons/fa";
 import Title from "../../Home/Saherd/Title/Title";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import { useForm } from "react-hook-form";
 // import useAxios from "../../../../Hooks/useAxcios";
 
 
@@ -9,55 +10,10 @@ const Hosting_Image_api = `https://api.imgbb.com/1/upload?key=${Hosting_Image_ke
 
 const AddItem = () => {
     const axiousPublic = useAxiosPublic();
+    const { register, handleSubmit, reset, formState: { errors }, } = useForm();
     // const axiosSeceur = useAxios();
 
-    const handlaerSubmitFrom = async (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const category = form.Category.value;
-        const price = form.Price.value;
-        const recipe = form.recipe.value;
-        const fileInput = form.Photo.files[0];  // Get the first selected file
-        
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('recipe', recipe);
-        formData.append('image', fileInput, fileInput.name); // Append the file to FormData with its name
-        formData.append('Category', category);
-        formData.append('Price', price);
-    
-        try {
-            // Upload image to ImgBB
-            const imgRes = await axiousPublic.post(Hosting_Image_api, formData,{
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            if (imgRes.data.success) {
-                // Image uploaded successfully, prepare menu items data
-                const menuItems = {
-                    name,
-                    recipe,
-                    image: imgRes.data.data.display_url,
-                    Category: category,
-                    Price: parseFloat(price)
-                };
-                // //now Post the new url
-                // const menuRes = await axiosSeceur.post('/menu', menuItems);
-                // console.log(menuRes.data)
-                // if(menuRes.data.insertedId){
-                //     //show success popup
-                // }
-                // Now you can send `menuItems` data to MongoDB or perform any other action
-                console.log(menuItems);
-            }
-    
-          
-        } catch (error) {
-            console.error('Error uploading image:', error);
-        }
-    };
+
     
 
 

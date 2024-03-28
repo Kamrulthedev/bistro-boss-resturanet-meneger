@@ -17,6 +17,7 @@ import UpdateItem from "./Pages/Deshbord/UpdateItem/UpdateItem";
 import ManegeBooking from "./Pages/Deshbord/MenegeBooking/ManegeBooking";
 import AdminRaouts from "../Raouts/AdminRaouts";
 import ContactUs from "./Pages/Contact/ContacUs/ContactUs";
+import UserHome from "./Pages/Deshbord/UserHome/UserHome";
 
 
 
@@ -47,8 +48,8 @@ const router = createBrowserRouter([
                 element: <SignUp></SignUp>
             },
             {
-                path:'/ContactUs',
-                element:<ContactUs></ContactUs>
+                path: '/ContactUs',
+                element: <ContactUs></ContactUs>
             }
 
         ]
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
                 path: 'Booking',
                 element: <ManegeBooking></ManegeBooking>
             },
+            {
+                path:'Home',
+                element:<UserHome></UserHome>
+            },
             //admin routs
             {
                 path: "AllUsers",
@@ -84,14 +89,14 @@ const router = createBrowserRouter([
                 path: 'manegeItems',
                 element: <AdminRaouts><ManegeItems></ManegeItems></AdminRaouts>
             },
-          
+
             {
                 path: 'UpdateItem',
                 element: <AdminRaouts><UpdateItem></UpdateItem></AdminRaouts>
             }
         ]
     }
-    
+
 ])
 
 export default router;
