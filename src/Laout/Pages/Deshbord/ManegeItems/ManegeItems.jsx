@@ -2,17 +2,44 @@ import { AiTwotoneDelete } from "react-icons/ai";
 import Title from "../../Home/Saherd/Title/Title";
 import useMenu from "../../../../Hooks/useMenu";
 import { FaEdit } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAxios from "../../../../Hooks/useAxcios";
 
 
 const ManegeItems = () => {
-    const [ menu, loding ] = useMenu();
+    const [menu, loding] = useMenu();
+    const axiosSeceur = useAxios();
 
+
+
+    const hanlderFoodDelete = async (item) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async(result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSeceur.delete(`/menu/${item._id}`)
+                console.log(res);
+                if(res.data.deletedCount >0 ){
+
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: `${item.name} deleted.`,
+                        icon: "success"
+                    });
+                }
+            }
+        });
+    };
     
 
-    const hanlderFoodDelete = (item) =>{
 
-    }
-    const hanlderFoodUpdate = (item) =>{
+    const hanlderFoodUpdate = (item) => {
 
     }
 
@@ -61,13 +88,16 @@ const ManegeItems = () => {
                                     <td>
                                         <span className="badge badge-ghost badge-sm">$ {item.price}</span>
                                     </td>
-                                    
+
                                     <td>
-                                    <button onClick={() => hanlderFoodUpdate(item._id)} className="btn btn-ghost btn-xs"> <FaEdit className="text-orange-400 text-2xl" /> </button>
+                                        <button onClick={() => hanlderFoodUpdate(item._id)} className="btn btn-ghost btn-xs"> <FaEdit className="text-orange-400 text-2xl" /> </button>
                                     </td>
 
                                     <th>
-                                        <button onClick={() => hanlderFoodDelete(item._id)} className="btn btn-ghost btn-xs"> <AiTwotoneDelete className="text-red-500 text-2xl" /> </button>
+                                        <th>
+                                            <button onClick={() => hanlderFoodDelete(item)} className="btn btn-ghost btn-xs"> <AiTwotoneDelete className="text-red-500 text-2xl" /> </button>
+                                        </th>
+
                                     </th>
                                 </tr>)
                             }

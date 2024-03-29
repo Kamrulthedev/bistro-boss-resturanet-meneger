@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 
 const Hosting_Image_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const Hosting_Image_api = `https://api.imgbb.com/1/upload?key=${Hosting_Image_key}`;
+const Hosting_Image_api = `https://api.imgbb.com/1/upload?expiration=600&key=${Hosting_Image_key}`;
 
 const AddItem = () => {
     const axiousPublic = useAxiosPublic();
@@ -36,7 +36,6 @@ const AddItem = () => {
                 image: res.data.data.display_url,
                 Price: parseFloat(data.Price)
             }
-            console.log(menuItem)
             const menuRes = await axiousSeceur.post('/menu', menuItem)
 
             console.log(menuRes.data);
