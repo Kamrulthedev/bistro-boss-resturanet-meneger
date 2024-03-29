@@ -18,6 +18,7 @@ import ManegeBooking from "./Pages/Deshbord/MenegeBooking/ManegeBooking";
 import AdminRaouts from "../Raouts/AdminRaouts";
 import ContactUs from "./Pages/Contact/ContacUs/ContactUs";
 import UserHome from "./Pages/Deshbord/UserHome/UserHome";
+import Reservation from "./Pages/Deshbord/Reservation/Reservation";
 
 
 
@@ -69,8 +70,12 @@ const router = createBrowserRouter([
                 element: <ManegeBooking></ManegeBooking>
             },
             {
-                path:'Home',
-                element:<UserHome></UserHome>
+                path: 'Home',
+                element: <UserHome></UserHome>
+            },
+            {
+                path:'Reservation',
+                element:<Reservation></Reservation>
             },
             //admin routs
             {
