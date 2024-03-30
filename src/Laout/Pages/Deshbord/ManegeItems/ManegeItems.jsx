@@ -4,7 +4,7 @@ import useMenu from "../../../../Hooks/useMenu";
 import { FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxios from "../../../../Hooks/useAxcios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const ManegeItems = () => {
@@ -41,8 +41,7 @@ const ManegeItems = () => {
 
 
     const hanlderFoodUpdate = (item) => {
-
-    }
+    };
 
 
     return (
@@ -91,7 +90,12 @@ const ManegeItems = () => {
                                     </td>
 
                                     <td>
-                                        <Link to={''}>   <button onClick={() => hanlderFoodUpdate(item._id)} className="btn btn-ghost btn-xs"> <FaEdit className="text-orange-400 text-2xl" /> </button></Link>
+                                        <Link to={`/Dashboard/UpdateItem/${item._id}`}>
+                                            <button onClick={hanlderFoodUpdate} className="btn btn-ghost btn-xs">
+                                                <FaEdit className="text-orange-400 text-2xl" />
+                                            </button>
+                                        </Link>
+
                                     </td>
 
                                     <th>

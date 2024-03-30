@@ -1,7 +1,13 @@
+import { useLoaderData } from "react-router-dom";
 import Title from "../../Home/Saherd/Title/Title";
 
 
+
 const UpdateItem = () => {
+    const item = useLoaderData();
+    console.log(item);
+
+    
     return (
         <div>
             <Title subcontitle={'---update---'} subconLocation={'UPDATE ITEM'}></Title>
@@ -23,7 +29,7 @@ const UpdateItem = () => {
                                 <span className="label-text text-black font-bold">Category*</span>
                             </div>
                             <select className="select select-accent w-full max-w-xs">
-                                <option disabled selected>Pick a pizza</option>
+                                <option disabled value={''} selected>Pick a pizza</option>
                                 <option>Category</option>
                                 <option>Veggie</option>
                                 <option>Pepperoni</option>
@@ -60,6 +66,7 @@ const UpdateItem = () => {
                     <button className="btn btn-sm bg-orange-800 text-white">Update Recipe Details</button>
                 </div>
             </div>
+         
         </div>
     );
 };
