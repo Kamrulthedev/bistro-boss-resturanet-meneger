@@ -1,7 +1,6 @@
 
 import Title from "../../Home/Saherd/Title/Title";
 import ReservationInfo from "./ReservationInfo";
-import { FaClipboardList } from "react-icons/fa6";
 import { FiPhoneCall } from "react-icons/fi";
 
 const Reservation = () => {
@@ -12,9 +11,7 @@ const Reservation = () => {
         <div className="bg-white text-black pb-8">
             <Title subcontitle={'-----Reservation-----'} subconLocation={'BOOK A TABLE'}></Title>
             <ReservationInfo></ReservationInfo>
-            <div className="text-center">
-                <button className="btn bg-orange-400 text-white ">Book A Tarble <FaClipboardList></FaClipboardList></button>
-            </div>
+           
             <Title subcontitle={'----Visit Us----'} subconLocation={'OUR LOCATIOIN'}></Title>
 
             <div className="ml-6 flex">

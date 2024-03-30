@@ -4,10 +4,11 @@ import useMenu from "../../../../Hooks/useMenu";
 import { FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxios from "../../../../Hooks/useAxcios";
+import { Link } from "react-router-dom";
 
 
 const ManegeItems = () => {
-    const [menu, loding] = useMenu();
+    const [menu, loading, refetch] = useMenu();
     const axiosSeceur = useAxios();
 
 
@@ -21,12 +22,12 @@ const ManegeItems = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-        }).then(async(result) => {
+        }).then(async (result) => {
             if (result.isConfirmed) {
                 const res = await axiosSeceur.delete(`/menu/${item._id}`)
                 console.log(res);
-                if(res.data.deletedCount >0 ){
-
+                if (res.data.deletedCount > 0) {
+                    refetch();
                     Swal.fire({
                         title: "Deleted!",
                         text: `${item.name} deleted.`,
@@ -36,7 +37,7 @@ const ManegeItems = () => {
             }
         });
     };
-    
+
 
 
     const hanlderFoodUpdate = (item) => {
@@ -90,14 +91,13 @@ const ManegeItems = () => {
                                     </td>
 
                                     <td>
-                                        <button onClick={() => hanlderFoodUpdate(item._id)} className="btn btn-ghost btn-xs"> <FaEdit className="text-orange-400 text-2xl" /> </button>
+                                        <Link to={''}>   <button onClick={() => hanlderFoodUpdate(item._id)} className="btn btn-ghost btn-xs"> <FaEdit className="text-orange-400 text-2xl" /> </button></Link>
                                     </td>
 
                                     <th>
                                         <th>
                                             <button onClick={() => hanlderFoodDelete(item)} className="btn btn-ghost btn-xs"> <AiTwotoneDelete className="text-red-500 text-2xl" /> </button>
                                         </th>
-
                                     </th>
                                 </tr>)
                             }
