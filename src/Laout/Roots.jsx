@@ -19,6 +19,7 @@ import AdminRaouts from "../Raouts/AdminRaouts";
 import ContactUs from "./Pages/Contact/ContacUs/ContactUs";
 import UserHome from "./Pages/Deshbord/UserHome/UserHome";
 import Reservation from "./Pages/Deshbord/Reservation/Reservation";
+import Payment from "./Pages/Deshbord/Payment/Payment";
 
 
 
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
             {
                 path:'Reservation',
                 element:<Reservation></Reservation>
+            },
+            {
+                path: 'payment',
+                element: <Payment></Payment>
             },
             //admin routs
             {

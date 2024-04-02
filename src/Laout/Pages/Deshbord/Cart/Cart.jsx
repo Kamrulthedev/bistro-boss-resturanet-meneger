@@ -49,9 +49,11 @@ const Cart = () => {
             <div className="flex justify-between">
                 <h1 className="text-2xl font-bold p-8 uppercase">Total orders : {cart.length}</h1>
                 <h1 className="text-2xl font-bold p-8 uppercase">total price : {totalPrice}</h1>
-                <Link >
+              {cart.length?  <Link  to={'/Dashboard/payment'}>
                     <button className="btn btn-sm bg-amber-500 text-black hover:text-white mt-9 mr-6 ">PAY</button>
-                </Link>
+                </Link> :
+                 <button disabled className="btn btn-sm bg-amber-500 text-black hover:text-white mt-9 mr-6 ">PAY</button>
+                }
             </div>
             {/* taibal */}
             <div>

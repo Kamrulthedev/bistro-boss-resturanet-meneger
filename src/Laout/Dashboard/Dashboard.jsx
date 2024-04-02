@@ -46,7 +46,7 @@ const Deshbord = () => {
                                 <li> <NavLink to='/Dashboard/Reservation' className='hover:text-blue-800 text-black'>
                                     <FaCalendar className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />RESERVATION</NavLink></li>
 
-                                <li> <NavLink to='/Dashboard/Payment' className='hover:text-blue-800 text-black'>
+                                <li> <NavLink to='/Dashboard/PaymentHistory' className='hover:text-blue-800 text-black'>
                                     <MdPayment className="text-xl ml-2 w-6 h-6 hover:text-lime-500 " />PAYMENT HISTORY</NavLink></li>
 
                                 <li> <NavLink to='/Dashboard/Cart' className='hover:text-blue-800 text-black'>

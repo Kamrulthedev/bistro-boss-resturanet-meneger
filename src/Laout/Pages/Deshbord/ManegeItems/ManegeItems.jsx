@@ -4,12 +4,13 @@ import useMenu from "../../../../Hooks/useMenu";
 import { FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxios from "../../../../Hooks/useAxcios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const ManegeItems = () => {
     const [menu, loading, refetch] = useMenu();
     const axiosSeceur = useAxios();
+  
 
 
 
@@ -41,6 +42,7 @@ const ManegeItems = () => {
 
 
     const hanlderFoodUpdate = (item) => {
+        
     };
 
 
@@ -69,6 +71,7 @@ const ManegeItems = () => {
                         <tbody>
                             {
                                 menu.map((item, index) => <tr key={item._id}>
+                                 
                                     <th>
                                         {index + 1}
                                     </th>
